@@ -1,0 +1,8 @@
+/studio031/data/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+/studio031/data/*.json
+  Cache-Control: no-cache
+/studio031/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

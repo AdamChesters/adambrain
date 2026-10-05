@@ -1,0 +1,105 @@
+{
+  "revision": "068.2-code-only",
+  "external_asset_paths": [
+    "/assets/",
+    "/studio031/data/"
+  ],
+  "files": {
+    ".gitattributes": {
+      "bytes": 83,
+      "sha256": "652c0e233d71644abf02ccf1f04f58b89056e96aff198b3f09bc8146974e226a"
+    },
+    ".gitignore": {
+      "bytes": 268,
+      "sha256": "a242bee96fa9a2e5385dbcd4fac6567e789d3c8a2f9f237e3bbc4a677548d0a3"
+    },
+    "README.md": {
+      "bytes": 2570,
+      "sha256": "b8ba4d172dbd1b5f44cfb4961aa555648311c4544572d81b5cdecea53dbcbef2"
+    },
+    "scripts/package-site.py": {
+      "bytes": 1435,
+      "sha256": "898b9e7c1666d9a506ef5c2dedfc1a78929b125dbdb6a36ace478883b32e5c3b"
+    },
+    "scripts/serve.py": {
+      "bytes": 2095,
+      "sha256": "e4858d345d66ff2bbbe152627c4a3355f954d04eacb536420d0f170b7a6eb169"
+    },
+    "web/404.html": {
+      "bytes": 497,
+      "sha256": "d7d526fff5c71cd82a11f99e4bc44d9cd56f804a1dccbc5db03a07a145ba8a46"
+    },
+    "web/_headers": {
+      "bytes": 259,
+      "sha256": "7e1f088e35cde0d042e87a511fa9ddafb75530f120430054f6b73f7ce55694aa"
+    },
+    "web/_redirects": {
+      "bytes": 27,
+      "sha256": "fe34145e042fd81185a7053316b58d9a0f87527c11980ddcd8f23116288c389b"
+    },
+    "web/index.html": {
+      "bytes": 15780,
+      "sha256": "b2fdb33b720707b0cd23002ae6072aa24b2f0c2280f8ccbed358eea67ffdabd6"
+    },
+    "web/landing.css": {
+      "bytes": 5765,
+      "sha256": "3e5e4fdd4287e13da67bda67426bcd69c8d81ddab4d24ad7b1881f834340ac1f"
+    },
+    "web/studio031/asset-worker.js": {
+      "bytes": 595,
+      "sha256": "9e50e214f15617ff095bdb4d206316196c9db21a81490ade2afac99f713ad863"
+    },
+    "web/studio031/data-origin.css": {
+      "bytes": 1848,
+      "sha256": "2c7fe2bfb9b12348a7ee43d66556f5a1a9574683568a48ec2b6ea367e67ea8e1"
+    },
+    "web/studio031/hybrid-volume.js": {
+      "bytes": 20790,
+      "sha256": "14da07efb099cbf92524dd7407a12b08dc851e61596f8b4dac833d8785fb8738"
+    },
+    "web/studio031/index.html": {
+      "bytes": 8282,
+      "sha256": "bc70163bfc48356f663822a5f441578415a86d35152432a7f39ce2ca6a13289f"
+    },
+    "web/studio031/render-quality.js": {
+      "bytes": 2757,
+      "sha256": "71713ddd53ce3c28c4045d115a3d448198a855bbb7fbfd3e7041b4ea777e5a0d"
+    },
+    "web/studio031/scheduler.js": {
+      "bytes": 1423,
+      "sha256": "5a3282f49162fc5af85f95264a8b1da3e2322fc3aad20061dd9964cb3a4ac124"
+    },
+    "web/studio031/source-data.js": {
+      "bytes": 5489,
+      "sha256": "8dd95afe01cef50598107d1d34b9a35cb73ed4c48f57b83da2c96562f3bf33af"
+    },
+    "web/studio031/structure-volumes.js": {
+      "bytes": 26446,
+      "sha256": "85973d6ed935bc533f3df4bd607915daa8f8cfe52fade6be6b06a2c62898dddb"
+    },
+    "web/studio031/studio.css": {
+      "bytes": 5744,
+      "sha256": "003da847e1e8e9d6c4d1d58e70172154f8b2ba2dbd20b2758179d92c62d90f8e"
+    },
+    "web/studio031/studio.js": {
+      "bytes": 26043,
+      "sha256": "dbdf2bc858a83f61d55122fd6c223d838878945a00535c4e3110edef77b55689"
+    },
+    "web/studio031/vendor/THREE-LICENSE.txt": {
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    "web/studio031/vendor/addons/controls/OrbitControls.js": {
+      "bytes": 40755,
+      "sha256": "3d79d07ecb686b4e5d93232eedab255331c1beef711e13164eaa1f68655a5f2b"
+    },
+    "web/studio031/vendor/three.core.js": {
+      "bytes": 1458113,
+      "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+    },
+    "web/studio031/vendor/three.module.js": {
+      "bytes": 662772,
+      "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+    }
+  }
+}
