@@ -1,11 +1,22 @@
 // Bounded, shared transport. Each consumer owns its cancellation separately.
-const metrics={requests:0,encodedBytes:0,decodedBytes:0,deduplicated:0,active:0,maxActive:0,abortedRequests:0,indexRefreshes:0};
+const metrics={requests:0,encodedBytes:0,expectedEncodedBytes:0,decodedBytes:0,deduplicated:0,active:0,maxActive:0,abortedRequests:0,indexRefreshes:0};
 window.sourceMetrics=metrics;
 const inFlight=new Map(),queue=[],jobs=new Map(),workers=[],decodeQueue=[];
 let nextId=0,closed=false;
 let indexPromise=fetch('./data/transport.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Source index unavailable');return r.json();});
+export async function planSourceLoad(urls) {
+ const index=await indexPromise;
+ const paths=new Set(urls.map(url=>new URL(url,document.baseURI).pathname));
+ metrics.expectedEncodedBytes=[...paths].reduce((total,path)=>total+(index.entries[path]?.encoded_bytes||0),0);
+ progress();
+}
 const abortError=()=>new DOMException('Aborted','AbortError');
-function progress(){dispatchEvent(new CustomEvent('source-progress',{detail:{...metrics,queued:queue.length}}));}
+function progress(){metrics.receivedBytes=metrics.encodedBytes+[...inFlight.values()].reduce((total,record)=>total+(record.received||0),0);dispatchEvent(new CustomEvent('source-progress',{detail:{...metrics,queued:queue.length}}));}
+async function readSource(response,record,expectedBytes){
+ if(!response.body?.getReader)return response.arrayBuffer();
+ const reader=response.body.getReader();let data=new Uint8Array(expectedBytes||1048576),offset=0,lastUpdate=0;
+ try{for(;;){const {done,value}=await reader.read();if(done)break;if(offset+value.byteLength>data.byteLength){const larger=new Uint8Array(Math.max(offset+value.byteLength,data.byteLength*2));larger.set(data);data=larger;}data.set(value,offset);offset+=value.byteLength;record.received=offset;const now=performance.now();if(now-lastUpdate>100){progress();lastUpdate=now;}}progress();return offset===data.byteLength?data.buffer:data.buffer.slice(0,offset);}finally{reader.releaseLock();}
+}
 function worker(){
  const w=new Worker(new URL('./asset-worker.js',import.meta.url),{type:'module'});w.busy=false;
  w.onmessage=({data})=>{const j=jobs.get(data.id);jobs.delete(data.id);w.busy=false;if(j){data.error?j.reject(Error(data.error)):j.resolve(data.buffer);}pump();};
@@ -43,21 +54,21 @@ function subscribe(record,signal){
 }
 export async function sourceBuffer(url,signal){
  if(closed)throw Error('Source transport closed');if(signal?.aborted)throw abortError();
- const target=new URL(url,location.href);if(target.origin!==location.origin)throw Error('Source assets must stay local.');
+ const target=new URL(url,document.baseURI);if(target.origin!==location.origin)throw Error('Source assets must stay local.');
  if(inFlight.has(target.href)){metrics.deduplicated++;return subscribe(inFlight.get(target.href),signal);}
  const record={key:target.href,controller:new AbortController(),owners:new Set(),settled:false};
  record.promise=(async()=>{
   let acquired=false;const signal=record.controller.signal;
   try{
    await acquire(signal);acquired=true;signal.throwIfAborted();
-   let index=await indexPromise,entry=index.entries[target.pathname];if(!entry&&/\/data\/assets\/[a-f0-9]{64}\.bin$/.test(target.pathname)){index=await refreshIndex();entry=index.entries[target.pathname];if(!entry)throw Error('Source asset is absent from the current index');}const destination=entry?new URL(entry.url,location.href):target;
+   let index=await indexPromise,entry=index.entries[target.pathname];if(!entry&&/\/data\/assets\/[a-f0-9]{64}\.bin$/.test(target.pathname)){index=await refreshIndex();entry=index.entries[target.pathname];if(!entry)throw Error('Source asset is absent from the current index');}const destination=entry?new URL(entry.url,document.baseURI):target;
    for(let attempt=0;attempt<3;attempt++){
-    signal.throwIfAborted();
+    record.received=0;signal.throwIfAborted();
     try{
      const response=await fetch(destination,{signal});
      if(!response.ok){await response.body?.cancel();if(![502,503,504].includes(response.status)||attempt===2)throw Error('Source HTTP '+response.status);}
      else{
-      const bytes=await response.arrayBuffer();signal.throwIfAborted();metrics.requests++;metrics.encodedBytes+=bytes.byteLength;
+      const bytes=await readSource(response,record,entry?.encoded_bytes);signal.throwIfAborted();metrics.requests++;metrics.encodedBytes+=bytes.byteLength;record.received=0;
       const result=entry?await decode(bytes,entry):bytes;signal.throwIfAborted();metrics.decodedBytes+=result.byteLength;progress();return result;
      }
     }catch(e){if(!(e instanceof TypeError)||attempt===2||signal.aborted)throw e;}

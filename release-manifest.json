@@ -1,5 +1,5 @@
 {
-  "revision": "068.2-code-only",
+  "revision": "100.1",
   "external_asset_paths": [
     "/assets/",
     "/studio031/data/"
@@ -10,20 +10,20 @@
       "sha256": "652c0e233d71644abf02ccf1f04f58b89056e96aff198b3f09bc8146974e226a"
     },
     ".gitignore": {
-      "bytes": 268,
-      "sha256": "a242bee96fa9a2e5385dbcd4fac6567e789d3c8a2f9f237e3bbc4a677548d0a3"
+      "bytes": 281,
+      "sha256": "7f3bbd1e8cab430a7c8d761a25e14633ee3a5439da3aa30f87a0c5014580a453"
     },
     "README.md": {
-      "bytes": 2570,
-      "sha256": "b8ba4d172dbd1b5f44cfb4961aa555648311c4544572d81b5cdecea53dbcbef2"
+      "bytes": 3072,
+      "sha256": "9aff8754b67e957e3252275163ac5fe4ee1785985cdef895d6d25345996946c8"
     },
     "scripts/package-site.py": {
-      "bytes": 1435,
-      "sha256": "898b9e7c1666d9a506ef5c2dedfc1a78929b125dbdb6a36ace478883b32e5c3b"
+      "bytes": 2476,
+      "sha256": "bc8ab00e8d3245b2e25407526c6bae1ff1e71e260ca299af3a6ddd0d74d4dd68"
     },
     "scripts/serve.py": {
-      "bytes": 2095,
-      "sha256": "e4858d345d66ff2bbbe152627c4a3355f954d04eacb536420d0f170b7a6eb169"
+      "bytes": 2217,
+      "sha256": "f983bb178051fa80d074383f75ed0439dc5ad5ef0d189f4de3dae4ca4205a937"
     },
     "web/404.html": {
       "bytes": 497,
@@ -34,16 +34,24 @@
       "sha256": "7e1f088e35cde0d042e87a511fa9ddafb75530f120430054f6b73f7ce55694aa"
     },
     "web/_redirects": {
-      "bytes": 27,
-      "sha256": "fe34145e042fd81185a7053316b58d9a0f87527c11980ddcd8f23116288c389b"
+      "bytes": 82,
+      "sha256": "80b27e9db5caa9b1123d44ee5346713762ed77c3f11d5adce88c97a622101b71"
+    },
+    "web/credits.html": {
+      "bytes": 5467,
+      "sha256": "a9a3d7d7b86e6c01400ee166b1a477dd043b2f9193160f0ff3de5b197c1a7e2a"
     },
     "web/index.html": {
-      "bytes": 15780,
-      "sha256": "b2fdb33b720707b0cd23002ae6072aa24b2f0c2280f8ccbed358eea67ffdabd6"
+      "bytes": 16565,
+      "sha256": "0c604351fc3163fd84ca52b60a04e478c8d792ce41b850358da67c04b9719cb7"
     },
     "web/landing.css": {
-      "bytes": 5765,
-      "sha256": "3e5e4fdd4287e13da67bda67426bcd69c8d81ddab4d24ad7b1881f834340ac1f"
+      "bytes": 7855,
+      "sha256": "ebfe4472604e102d71f4c59e7945f07e4aa9ec24ebda4726a866ee1069f1890f"
+    },
+    "web/landing.js": {
+      "bytes": 1603,
+      "sha256": "e9e354ed15e381b1b2e51802753e32478b9614087b2a6ae25d64acb1c5af057f"
     },
     "web/studio031/asset-worker.js": {
       "bytes": 595,
@@ -54,12 +62,16 @@
       "sha256": "2c7fe2bfb9b12348a7ee43d66556f5a1a9574683568a48ec2b6ea367e67ea8e1"
     },
     "web/studio031/hybrid-volume.js": {
-      "bytes": 20790,
-      "sha256": "14da07efb099cbf92524dd7407a12b08dc851e61596f8b4dac833d8785fb8738"
+      "bytes": 21495,
+      "sha256": "0c99c51dc471862c3160c2f0ceb89f25009d0d19376d44e21ae530f5e278c399"
     },
     "web/studio031/index.html": {
-      "bytes": 8282,
-      "sha256": "bc70163bfc48356f663822a5f441578415a86d35152432a7f39ce2ca6a13289f"
+      "bytes": 9227,
+      "sha256": "28f96e5bc99ac0cbb82149e15b3674b0fdde1c360aa2eb1ec43b2d9a1ec78409"
+    },
+    "web/studio031/loading-ui.js": {
+      "bytes": 1569,
+      "sha256": "fb8175af8500f15a725a444889b334e82cb203757971a4017626152712fd05bb"
     },
     "web/studio031/render-quality.js": {
       "bytes": 2757,
@@ -70,20 +82,20 @@
       "sha256": "5a3282f49162fc5af85f95264a8b1da3e2322fc3aad20061dd9964cb3a4ac124"
     },
     "web/studio031/source-data.js": {
-      "bytes": 5489,
-      "sha256": "8dd95afe01cef50598107d1d34b9a35cb73ed4c48f57b83da2c96562f3bf33af"
+      "bytes": 6699,
+      "sha256": "2ec9058dfac16ebff350f2fccbc849cc2d08f5cc4b51161d0adad635e56c99f3"
     },
     "web/studio031/structure-volumes.js": {
-      "bytes": 26446,
-      "sha256": "85973d6ed935bc533f3df4bd607915daa8f8cfe52fade6be6b06a2c62898dddb"
+      "bytes": 26476,
+      "sha256": "bba3ab2787fb69b53428d435de8edf509464a1f07ccf8a47dd58ae2186d06926"
     },
     "web/studio031/studio.css": {
-      "bytes": 5744,
-      "sha256": "003da847e1e8e9d6c4d1d58e70172154f8b2ba2dbd20b2758179d92c62d90f8e"
+      "bytes": 6734,
+      "sha256": "a4e0a9b6000406778c43dc8877739c48c2ff219f7ba5f7b341b6bfbd98d3f79f"
     },
     "web/studio031/studio.js": {
-      "bytes": 26043,
-      "sha256": "dbdf2bc858a83f61d55122fd6c223d838878945a00535c4e3110edef77b55689"
+      "bytes": 27359,
+      "sha256": "34b316f97e14e1878b67080cc5d5f99d778e4976534441694d29972db844b4df"
     },
     "web/studio031/vendor/THREE-LICENSE.txt": {
       "bytes": 1081,

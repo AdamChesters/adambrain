@@ -17,6 +17,8 @@ class AssetHandler(SimpleHTTPRequestHandler):
 
     def translate_path(self, path):
         url_path = unquote(urlsplit(path).path)
+        if url_path in ('/viewer', '/viewer/'):
+            return str(Path(self.directory) / 'studio031' / 'index.html')
         mounts = ('/assets/', '/studio031/data/')
         if self.assets_directory:
             for mount in mounts:

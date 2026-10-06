@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#151616">
+  <title>Credits + software used | /AdamBrain</title>
+  <meta name="description" content="Adam Chesters is the only contributor so far. Software and open source credits for /AdamBrain.">
+  <link rel="canonical" href="https://brain.adamch.com/credits.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Credits + software used | /AdamBrain">
+  <meta property="og:description" content="Software and open source credits for /AdamBrain.">
+  <meta property="og:url" content="https://brain.adamch.com/credits.html">
+  <meta property="og:image" content="https://brain.adamch.com/assets/brain-social-card.jpg?v=090.1">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Adam Chesters beside his MRI-derived portrait, with /AdamBrain title.">
+  <meta name="twitter:image" content="https://brain.adamch.com/assets/brain-social-card.jpg?v=090.1">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./landing.css?v=078.2">
+</head>
+<body class="credits-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="brand-lockup"><a class="wordmark" href="https://adamch.com/">adamch.</a><span class="brand-name mono">ADAM CHESTERS</span></div>
+      <nav aria-label="Main navigation"><a href="https://adamch.com/about-me/">About</a><a href="https://adamch.com/blog/">Blog</a><a href="https://adamch.com/portfolio/">Portfolio</a><a href="https://adamch.com/contact/">Contact</a></nav>
+    </header>
+    <main id="main">
+      <a class="back-link" href="./">← Back to AdamBrain</a>
+      <article>
+        <header class="article-header">
+          <p class="eyebrow">/ADAMBRAIN</p>
+          <h1>Credits + software used</h1>
+        </header>
+        <div class="article-body prose">
+          <section class="contributors" aria-labelledby="contributors-title">
+            <h2 id="contributors-title">Contributor</h2>
+            <p><a href="https://adamch.com/">Adam Chesters</a> is the only contributor so far.</p>
+          </section>
+          <section id="credits" class="credits prose" aria-labelledby="credits-title">
+            <p class="eyebrow">OPEN SOURCE</p>
+            <h2 id="credits-title">Software used</h2>
+            <p>This project builds on the work of these open source communities.</p>
+            <dl class="credit-list">
+              <div><dt><a href="https://github.com/mrdoob/three.js">Three.js</a></dt><dd>Browser rendering and camera controls.</dd></div>
+              <div><dt><a href="https://github.com/rordenlab/dcm2niix">dcm2niix</a></dt><dd>Converting selected DICOM stacks into usable 3D volumes.</dd></div>
+              <div><dt><a href="https://github.com/pydicom/pydicom">pydicom</a> and <a href="https://github.com/pydicom/pylibjpeg">pylibjpeg</a></dt><dd>Reading the DICOM archive and checking decoded scan values.</dd></div>
+              <div><dt><a href="https://github.com/freesurfer/freesurfer">FreeSurfer</a></dt><dd>Brain reconstruction and tissue estimates.</dd></div>
+              <div><dt><a href="https://github.com/Slicer/Slicer">3D Slicer</a></dt><dd>Source-linked inspection and editable image and tissue layers.</dd></div>
+              <div><dt><a href="https://github.com/SimpleITK/SimpleITK">SimpleITK</a></dt><dd>Image alignment and processing.</dd></div>
+              <div><dt><a href="https://github.com/numpy/numpy">NumPy</a>, <a href="https://github.com/scipy/scipy">SciPy</a> and <a href="https://github.com/nipy/nibabel">NiBabel</a></dt><dd>Volume calculations, filtering and neuroimaging file handling.</dd></div>
+              <div><dt><a href="https://github.com/scikit-image/scikit-image">scikit-image</a> and <a href="https://github.com/python-pillow/Pillow">Pillow</a></dt><dd>Image processing, surface experiments and review images.</dd></div>
+            </dl>
+            <section class="research-credits" aria-labelledby="research-title"><h3 id="research-title">Earlier prototypes and reconstruction experiments</h3>
+              <p><a href="https://github.com/niivue/brain2print">brain2print</a> and <a href="https://github.com/niivue/niivue">NiiVue</a> helped with early browser-based tissue previews. <a href="https://www.blender.org/">Blender</a> was used for editable presentation models.</p>
+              <p>Offline reconstruction experiments used <a href="https://github.com/pytorch/pytorch">PyTorch</a>, <a href="https://github.com/gift-surg/NiftyMIC">NiftyMIC</a>, <a href="https://github.com/daviddmc/NeSVoR">NeSVoR</a>, <a href="https://github.com/brudfors/UniRes">UniRes</a> and <a href="https://github.com/spinalcordtoolbox/spinalcordtoolbox">Spinal Cord Toolbox</a>. Those experiments aren’t all part of this head viewer.</p>
+            </section>
+          </section>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer"><span>Adam Chesters</span><div><a href="https://adamch.com/">adamch.com</a><a href="https://github.com/AdamChesters/adambrain">GitHub</a><a href="https://discord.gg/fs4WyaQPA">Discord</a></div></footer>
+  </div>
+</body>
+</html>

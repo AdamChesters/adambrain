@@ -1,6 +1,7 @@
 """Assemble the static volume site from code and separately managed assets."""
 import argparse
 import shutil
+import json
 from pathlib import Path
 
 parser = argparse.ArgumentParser()
@@ -19,8 +20,28 @@ for relative in ('assets/brain-oblique-hold.png', 'studio031/data/volume-groups.
     if not (assets / relative).is_file():
         parser.error('Required external asset missing: ' + relative)
 shutil.copytree(code, output)
-for relative in ('assets', 'studio031/data'):
-    shutil.copytree(assets / relative, output / relative)
+# Only assets used by the published pages are included.
+landing_assets = (
+    'brain-oblique-hold.png', 'adam-photo-square.webp', 'brain-cover-loop.webm',
+    'brain-cover-loop.mp4', 'brain-cover-loop.gif', 'brain-mri-cross-sections.jpg',
+    'brain-mri-mosaic.webp', 'brain-social-x.jpg', 'brain-social-linkedin.jpg',
+)
+(output / 'assets').mkdir()
+for name in landing_assets:
+    shutil.copy2(assets / 'assets' / name, output / 'assets' / name)
+data = assets / 'studio031/data'
+manifest = json.loads((data / 'transport.json').read_text())
+(output / 'studio031/data/assets').mkdir(parents=True)
+for name in ('volume-groups.json', 'structure-volumes.json', 'transport.json'):
+    shutil.copy2(data / name, output / 'studio031/data' / name)
+for entry in manifest['entries'].values():
+    name = Path(entry['url']).name
+    if name != entry['sha256'] + '.bin.gz':
+        parser.error('Unexpected viewer asset name')
+    source = data / 'assets' / name
+    if source.stat().st_size != entry['encoded_bytes']:
+        parser.error('Viewer asset size mismatch: ' + name)
+    shutil.copy2(source, output / 'studio031/data/assets' / name)
 files = [p for p in output.rglob('*') if p.is_file()]
 if len(files) > 20000 or any(p.stat().st_size > 25 * 1024 * 1024 for p in files):
     parser.error('Assembled site exceeds Cloudflare Pages Free file limits')

@@ -17,7 +17,14 @@ Supply a separate asset folder with this layout:
 adambrain-assets/
   assets/
     brain-oblique-hold.png
-    social-preview.png
+    adam-photo-square.webp
+    brain-cover-loop.webm
+    brain-cover-loop.mp4
+    brain-cover-loop.gif
+    brain-mri-cross-sections.jpg
+    brain-mri-mosaic.webp
+    brain-social-x.jpg
+    brain-social-linkedin.jpg
   studio031/
     data/
       volume-groups.json
@@ -31,7 +38,7 @@ adambrain-assets/
 python3 scripts/serve.py --directory web --assets-directory /path/to/adambrain-assets --port 8888
 ```
 
-Open `http://127.0.0.1:8888/`. The head viewer is at `/studio031/`.
+Open `http://127.0.0.1:8888/`. The interactive viewer is at `/viewer`.
 The server mounts only `/assets/` and `/studio031/data/` from the supplied folder.
 Browser URLs stay relative and on the same origin; machine-specific paths are
 not embedded in the site. Without the separate assets, the source alone cannot
@@ -45,7 +52,11 @@ Assemble a local deployment folder without adding its images or data to Git:
 python3 scripts/package-site.py --assets-directory /path/to/adambrain-assets --output /path/to/new-site-folder
 ```
 
-Deploy that assembled folder to Cloudflare Pages. No Node build, server-side
+Deploy that assembled folder to Cloudflare Pages using Direct Upload. Only the
+landing assets and compressed viewer payloads are packaged; raw acquisitions,
+modelling work and preview alternatives are excluded. For a custom subdomain,
+add it to the Pages project first, then create a CNAME pointing to the project
+`pages.dev` hostname at your DNS provider. No Node build, server-side
 functions, updater or feedback relay is required. Donation links go directly to
 the selected providers. Application-compressed `.bin.gz` files must be served as
 raw downloads; do not force `Content-Encoding: gzip`, because the viewer worker

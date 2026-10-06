@@ -30,3 +30,5 @@ work/
 anatomy/
 print/
 dist/
+*.webm
+*.mp4

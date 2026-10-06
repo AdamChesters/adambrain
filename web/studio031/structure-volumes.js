@@ -1,10 +1,10 @@
-import {sourceBuffer} from './source-data.js?v=063.1';
+import {sourceBuffer} from './source-data.js?v=086.1';
 import * as THREE from 'three';
 
 // Extra MRI sources keep native grids. Only annotation weights are interpolated.
 const matrix = rows => new THREE.Matrix4().set(...rows.flat());
 const local = url => {
-  const u = new URL(url, location.href);
+  const u = new URL(url, document.baseURI);
   if (u.origin !== location.origin) throw Error('Structure assets must stay local.');
   return u.href;
 };
@@ -31,8 +31,8 @@ function bounds(m, dims) {
 
 export class StructureVolumes {
   constructor() { this.ready=false; this.error=null; this.enabled=true; this.cache=new Map(); this.atlasCache=new Map(); this.atlasTextures=new Map(); this.selecting=new Set(); this.loadControllers=new Map(); this.retentionMS=15000; this.residencyTimer=null; this.residencyDeadline=0; this.releasedBytes=0; this.slots=[]; this.serial={}; this.pending=new Map(); this.failures=new Map(); this.zero=texture(new ArrayBuffer(4),[1,1,1],true); this.residentHeadAtlas=null; this.scalarZero=texture(new ArrayBuffer(4),[1,1,1]); }
-  async initialize(url) {
-    this.manifest=await json(url);
+  async initialize(url, manifest=null) {
+    this.manifest=manifest || await json(url);
     this.keys=this.manifest.channels;
     this.sources=new Map(this.manifest.datasets.map(d=>[d.id,d]));
     const loaded=await Promise.all(this.manifest.slots.map(s=>['eyes','cortex023'].includes(s.id)?this.load(s.defaultId):this.placeholder(s.defaultId)));

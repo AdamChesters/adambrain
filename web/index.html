@@ -5,19 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#151616">
-  <title>Adambrain | Adam Chesters</title>
-  <meta name="description" content="An interactive portrait of my brain, built from MRI scans. Explore the volume, peel back tissue layers and see the structures within.">
+  <title>/AdamBrain | Adam Chesters</title>
+  <meta name="description" content="I was left unsupervised with 15,191 images of my head. Explore the interactive viewer.">
   <link rel="canonical" href="https://brain.adamch.com/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Adambrain | Adam Chesters">
-  <meta property="og:description" content="An interactive portrait of my brain, built from MRI scans.">
+  <meta property="og:title" content="/AdamBrain | Adam Chesters">
+  <meta property="og:description" content="I was left unsupervised with 15,191 images of my head. My brain made my brain a side project. Send help">
   <meta property="og:url" content="https://brain.adamch.com/">
-  <meta property="og:image" content="https://brain.adamch.com/assets/brain-oblique-hold.png">
+  <meta property="og:image" content="https://brain.adamch.com/assets/brain-social-linkedin.jpg?v=100.1">
   <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="750">
+  <meta property="og:image:height" content="627">
+  <meta property="og:image:alt" content="//AdamBrain: I was left unsupervised with 15,191 images of my head. Interactive viewer at brain.adamch.com.">
+  <meta name="twitter:image" content="https://brain.adamch.com/assets/brain-social-x.jpg?v=100.1">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./landing.css?v=068.2">
+  <link rel="stylesheet" href="./landing.css?v=091.1">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -29,61 +31,66 @@
     <main id="main">
       <a class="back-link" href="https://adamch.com/portfolio/">← Back to portfolio <span aria-hidden="true">↗</span></a>
       <article>
-        <header class="article-header">
-          <p class="eyebrow">THINGS I MADE</p>
-          <h1>Adambrain</h1>
-          <p class="standfirst">An interactive portrait of my brain,<br class="desktop-break"> built from MRI scans.</p>
-          <div class="article-meta"><span>Adam Chesters</span><span>3D / MRI / Browser</span></div>
-        </header>
+        <div class="article-hero">
+          <header class="article-header">
+            <p class="eyebrow">THINGS I MADE</p>
+            <h1>/AdamBrain</h1>
+          </header>
+          <div class="portrait-pair">
+            <figure class="portrait-photo"><img src="./assets/adam-photo-square.webp?v=091.1" width="650" height="650" fetchpriority="high" alt="Adam Chesters, facing right in a navy jacket and light blue shirt."></figure>
+          <figure class="article-cover">
+            <a href="/viewer" aria-label="Open Adambrain visualiser"><video id="cover-video" autoplay muted loop playsinline preload="metadata" poster="./assets/brain-oblique-hold.png?v=091.1" width="320" height="320" aria-label="An oblique view rotating gently as skin and bone fade away, pause, and return."><source src="./assets/brain-cover-loop.webm?v=091.1" type="video/webm"><source src="./assets/brain-cover-loop.mp4?v=091.1" type="video/mp4"><img src="./assets/brain-oblique-hold.png" width="320" height="320" alt="An oblique view of the MRI-derived brain."></video><img id="cover-gif" hidden data-src="./assets/brain-cover-loop.gif?v=091.1" width="320" height="320" alt="An oblique view rotating as skin and bone fade away, pause, and return."></a>
+          </figure>
+          </div>
+          <p class="standfirst">I built a portrait of my brain, from MRI scans.</p>
+        </div>
         <div class="article-body">
-          <figure class="article-cover"><a href="./studio031/" aria-label="Explore Adambrain in the volume viewer"><img src="./assets/brain-oblique-hold.png" width="1200" height="750" alt="An elevated quarter view of the MRI-derived brain, with skin and bone faded away to reveal brain tissue, fluid spaces and vessels." fetchpriority="high"></a><figcaption>The volume view, with skin and bone faded away.</figcaption></figure>
-          <div class="viewer-actions"><a class="button primary" href="./studio031/">Explore the volume <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/AdamChesters/adambrain">GitHub repository <span aria-hidden="true">↗</span></a></div>
-          <div class="prose">
-            <p>Rotate the model, look beneath the surface, and change the opacity and colour of each tissue layer. The opening demo gently fades skin and bone away, pauses to show what’s underneath, then brings them back.</p>
-            <p>Use <strong>Start / Stop</strong> to control the motion and <strong>Default view</strong> to return to the starting point. <strong>Save</strong> and <strong>Load</strong> keep a favourite view in your browser.</p>
-            <p class="scan-note">This is a scan-derived artwork. Some tissue boundaries and vessel classifications are interpretations; the viewer’s <strong>Data</strong> tab explains how the model was made.</p>
+
+          <div class="viewer-actions"><a class="button primary" href="/viewer">Open visualiser <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/AdamChesters/adambrain">GitHub repository <span aria-hidden="true">↗</span></a><a class="button discord" href="https://discord.gg/fs4WyaQPA">Join Discord <span aria-hidden="true">↗</span></a></div>
+          <div class="prose project-story">
+            <p>In 2023, I suddenly went blind. That was a fun day. Not many things cause that, none good.</p>
+            <p>It could have been worse.</p>
+            <p>Turns out, my body tried to eat my optic nerves, but I won. 20/20 vision baby, and slim to zero chance of recurrence. I have a rare autoimmune disorder, <a href="https://www.msaustralia.org.au/nmosd-and-mogad/myelin-oligodendrocyte-glycoprotein-antibody-disorders/">MOGAD</a>, and some of the worlds best studying/fighting it are right here in Australia. I can&#x27;t thank about 8 seperate teams at the <a href="https://www.thermh.org.au/">Royal Melbourne hospital</a> enough.</p>
+            <p class="reaction-gif"><img src="https://y.getyarn.io/8c882b43-e479-4d65-b14d-5fd8017d6628_text.gif" loading="lazy" alt="Thank you" referrerpolicy="no-referrer"></p>
+            <p>Years later, one day I got bored. &quot;Wait, I have a dvd with a scan of my brain, and I play with data&quot;. Could I interpolate something and build a custom model? 15,191 DICOM MRI images later...</p>
+            <p>The ultimate goal? Print a 3d model. That flashes for various reasons. Maybe when there&#x27;s lightning. Or I get a quad-kill in <a href="https://www.team17.com/games/wardogs">Wardogs</a>. Or when my <a href="https://justkasz.com">wife&#x27;s business</a> gets another big, tasty order (that&#x27;s happening a <em>lot</em>).</p>
+            <p>The thought of getting stimulus from my brain but smol, tickles me. There&#x27;s something about it being visual stimulus, no less, thats deeply, darkly ironic.  (Fuck you, <a href="https://www.msaustralia.org.au/nmosd-and-mogad/myelin-oligodendrocyte-glycoprotein-antibody-disorders/">MOGAD</a>. I win.)</p>
+            <p>once we have it, we can do some iiinterestin things. Animations. More interactivity. Maybe an educational visualisation of what <a href="https://www.msaustralia.org.au/nmosd-and-mogad/myelin-oligodendrocyte-glycoprotein-antibody-disorders/">MOGAD</a> was up to. Etc.</p>
+            <p>Follow me on <a href="https://www.linkedin.com/in/adamchesters/">LinkedIn</a> or <a href="https://x.com/_AChesters">X.com</a> to keep abreast of updates.</p>
           </div>
           <section id="about" class="about prose" aria-labelledby="about-title">
-            <p class="eyebrow">ABOUT THE PROJECT</p>
+            <p class="eyebrow">About the project</p>
             <h2 id="about-title">From scan slices to a portrait.</h2>
-            <p>The source archive contains <strong>15,191 DICOM MRI images</strong> from <strong>two studies, head and spine</strong>, organised into 133 image series. Every series was inventoried and reviewed using representative images to see what it could contribute. This portrait uses the head study, acquired on a Siemens MAGNETOM Sola 1.5 T MRI scanner.</p>
-            <p>A lot of those images show the same anatomy at different times or from different angles. They aren’t all separate scans with new detail. For example, the angiography sequence contains 40 original volumes and 39 background-subtracted volumes following contrast through the vessels.</p>
+            <figure class="mri-banner"><img src="./assets/brain-mri-cross-sections.jpg?v=083.1" width="960" height="360" loading="lazy" alt="Actual T1 MRI cross-sections, left to right: sagittal, axial and coronal."><figcaption>Yes, this is me</figcaption></figure>
+            <p>This portrait uses the head study, acquired on a <a href="https://www.siemens-healthineers.com/en-au/magnetic-resonance-imaging/0-35-to-1-5t-mri-scanner/magnetom-sola">Siemens MAGNETOM Sola 1.5 T</a> MRI scanner at the <a href="https://www.thermh.org.au/">Royal Melbourne hospital</a></p>
+            <p>A lot of those 15,191 images show the same anatomy at different times or from different angles. They aren’t all separate scans with new detail. For example, the angiography sequence contains 40 original volumes and 39 background-subtracted volumes following contrast through the vessels.</p>
             <h3>The images we used</h3>
             <ul class="source-list">
-              <li><strong>T1 MPRAGE, before and after contrast:</strong> two 208-slice volumes provide the main head and brain reference, with approximately 1 mm stored spacing.</li>
-              <li><strong>TWIST contrast angiography:</strong> the first nine subtracted phases provide the main vessel signal. All 39 subtracted phases were reviewed; their timing helps estimate arterial and venous groups.</li>
-              <li><strong>T2, FLAIR and susceptibility-weighted images:</strong> complementary views help cross-check brain, fluid and vessel boundaries.</li>
-              <li><strong>Targeted eye scans, including STIR and Dixon-water:</strong> supporting views help estimate the eye outlines.</li>
+              <li>T1 MPRAGE, before and after contrast: two 208-slice volumes provide the main head and brain reference, with approximately 1 mm stored spacing.</li>
+              <li>TWIST contrast angiography: the first nine subtracted phases provide the main vessel signal. All 39 subtracted phases were reviewed; their timing helps estimate arterial and venous groups.</li>
+              <li>T2, FLAIR and susceptibility-weighted images: complementary views help cross-check brain, fluid and vessel boundaries.</li>
+              <li>Targeted eye scans, including STIR and Dixon-water: supporting views help estimate the eye outlines. Eventually this will become a higher fidelity focus area.</li>
             </ul>
             <h3>How it comes together</h3>
-            <p>The slices are ordered by their recorded position and assembled into 3D volumes. Compatible head scans are aligned in the same physical space, then compared to estimate the tissue layers. Vessel signal is combined across the early contrast phases; different MRI contrasts support different structures, rather than being blindly added together.</p>
-            <p>The resulting volumes are compressed for the browser. The viewer samples through them to build the image you see, with separate colour and opacity controls. FreeSurfer helps estimate brain tissues; these boundaries and the vessel labels remain interpretations of the scans.</p>
+            <figure class="mri-mosaic"><img src="./assets/brain-mri-mosaic.webp?v=083.1" width="1440" height="1440" loading="lazy" alt="A 20 by 20 checkerboard of 400 actual MRI cross-sections, mixing T1, contrast angiography and Dixon-water eye scans."><figcaption>Yep, all still me</figcaption></figure>
+
+            <p>Slices were ordered by their recorded position and assembled into 3D volumes. Compatible head scans were re-aligned in the same physical space, and compared to estimate the tissue layers. Vessel signal is combined across the early contrast phases; different MRI contrasts support different structures, rather than being blindly added together.</p>
+            <p>The resulting volumes are compressed for the browser. The viewer samples through them to build the image you see, with separate colour and opacity controls. <a href="https://surfer.nmr.mgh.harvard.edu/">FreeSurfer</a> helps estimate brain tissues; these boundaries and the vessel labels remain interpretations of the scans.</p>
             <h3>What’s being worked on</h3>
-            <p><strong>A more performant rendering method is being worked on</strong>, with the aim of keeping fine detail while making the viewer smoother on phones and less powerful computers. Other work focuses on fine vessel continuity, tissue boundaries and loading performance.</p>
+            <p>A more performant rendering method.<br>
+              More refined detail from integrating more studies/scans.<br>
+              Smoothing between slices.<br>
+              A.I generated best-guest fill in where gaps exist (already lightly leveraged).<br>
+              A part / structure picker and index, highlighting system.<br>
+              More performant rendering for mobile devices.<br>
+              Finer vessel continuity and tissue boundaries.</p>
+            <p>Then the fun stuff.<br>
+              Music-synced pulsing through veins/nerves/structures, affecting transparency, etc.<br>
+              Material swapping. Turn the brain to glass. Veins to sand. Etc.<br>
+              Whatever you come up with.</p>
           </section>
           <section id="credits" class="credits prose" aria-labelledby="credits-title">
-            <p class="eyebrow">OPEN SOURCE</p>
-            <h2 id="credits-title">Credits</h2>
-            <p>This project builds on the work of these open source communities.</p>
-            <dl class="credit-list">
-              <div><dt><a href="https://github.com/mrdoob/three.js">Three.js</a></dt><dd>Browser rendering and camera controls.</dd></div>
-              <div><dt><a href="https://github.com/rordenlab/dcm2niix">dcm2niix</a></dt><dd>Converting selected DICOM stacks into usable 3D volumes.</dd></div>
-              <div><dt><a href="https://github.com/pydicom/pydicom">pydicom</a> and <a href="https://github.com/pydicom/pylibjpeg">pylibjpeg</a></dt><dd>Reading the DICOM archive and checking decoded scan values.</dd></div>
-              <div><dt><a href="https://github.com/freesurfer/freesurfer">FreeSurfer</a></dt><dd>Brain reconstruction and tissue estimates.</dd></div>
-              <div><dt><a href="https://github.com/Slicer/Slicer">3D Slicer</a></dt><dd>Source-linked inspection and editable image and tissue layers.</dd></div>
-              <div><dt><a href="https://github.com/SimpleITK/SimpleITK">SimpleITK</a></dt><dd>Image alignment and processing.</dd></div>
-              <div><dt><a href="https://github.com/numpy/numpy">NumPy</a>, <a href="https://github.com/scipy/scipy">SciPy</a> and <a href="https://github.com/nipy/nibabel">NiBabel</a></dt><dd>Volume calculations, filtering and neuroimaging file handling.</dd></div>
-              <div><dt><a href="https://github.com/scikit-image/scikit-image">scikit-image</a> and <a href="https://github.com/python-pillow/Pillow">Pillow</a></dt><dd>Image processing, surface experiments and review images.</dd></div>
-            </dl>
-            <details class="research-credits"><summary>Earlier prototypes and reconstruction experiments</summary>
-              <p><a href="https://github.com/niivue/brain2print">brain2print</a> and <a href="https://github.com/niivue/niivue">NiiVue</a> helped with early browser-based tissue previews. <a href="https://www.blender.org/">Blender</a> was used for editable presentation models.</p>
-              <p>Offline reconstruction experiments used <a href="https://github.com/pytorch/pytorch">PyTorch</a>, <a href="https://github.com/gift-surg/NiftyMIC">NiftyMIC</a>, <a href="https://github.com/daviddmc/NeSVoR">NeSVoR</a>, <a href="https://github.com/brudfors/UniRes">UniRes</a> and <a href="https://github.com/spinalcordtoolbox/spinalcordtoolbox">Spinal Cord Toolbox</a>. Those experiments aren’t all part of this head viewer.</p>
-            </details>
-          </section>
-          <section class="community" aria-labelledby="community-title">
-            <h2 id="community-title">Come have a look around.</h2>
-            <p>Join the Discord to chat about this and the other things I’m making.</p>
-            <a class="button secondary" href="https://discord.gg/fs4WyaQPA">Join Discord <span aria-hidden="true">↗</span></a>
+            <h2 id="credits-title"><a href="./credits.html">Credits + software used <span aria-hidden="true">↗</span></a></h2>
           </section>
           <section id="support" class="support" aria-labelledby="support-title">
             <p class="eyebrow">SUPPORT THE THINGS I MAKE</p>
@@ -100,7 +107,7 @@
 </defs>
 </svg>
 <span>GitHub Sponsors</span><span class="arrow" aria-hidden="true">↗</span></a></li>
-<li><a class="donation-button buymeacoffee" href="https://buymeacoffee.com/adamch"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.25-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 00-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 00-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.218.05 2.437.01 3.65-.118.299-.033.598-.073.896-.119.352-.054.578-.513.474-.834-.124-.383-.457-.531-.834-.473-.466.074-.96.108-1.382.146-1.177.08-2.358.082-3.536.006a22.228 22.228 0 01-1.157-.107c-.086-.01-.18-.025-.258-.036-.243-.036-.484-.08-.724-.13-.111-.027-.111-.185 0-.212h.005c.277-.06.557-.108.838-.147h.002c.131-.009.263-.032.394-.048a25.076 25.076 0 013.426-.12c.674.019 1.347.067 2.017.144l.228.031c.267.04.533.088.798.145.392.085.895.113 1.07.542.055.137.08.288.111.431l.319 1.484a.237.237 0 01-.199.284h-.003c-.037.006-.075.01-.112.015a36.704 36.704 0 01-4.743.295 37.059 37.059 0 01-4.699-.304c-.14-.017-.293-.042-.417-.06-.326-.048-.649-.108-.973-.161-.393-.065-.768-.032-1.123.161-.29.16-.527.404-.675.701-.154.316-.199.66-.267 1-.069.34-.176.707-.135 1.056.087.753.613 1.365 1.37 1.502a39.69 39.69 0 0011.343.376.483.483 0 01.535.53l-.071.697-1.018 9.907c-.041.41-.047.832-.125 1.237-.122.637-.553 1.028-1.182 1.171-.577.131-1.165.2-1.756.205-.656.004-1.31-.025-1.966-.022-.699.004-1.556-.06-2.095-.58-.475-.458-.54-1.174-.605-1.793l-.731-7.013-.322-3.094c-.037-.351-.286-.695-.678-.678-.336.015-.718.3-.678.679l.228 2.185.949 9.112c.147 1.344 1.174 2.068 2.446 2.272.742.12 1.503.144 2.257.156.966.016 1.942.053 2.892-.122 1.408-.258 2.465-1.198 2.616-2.657.34-3.332.683-6.663 1.024-9.995l.215-2.087a.484.484 0 01.39-.426c.402-.078.787-.212 1.074-.518.455-.488.546-1.124.385-1.766zm-1.478.772c-.145.137-.363.201-.578.233-2.416.359-4.866.54-7.308.46-1.748-.06-3.477-.254-5.207-.498-.17-.024-.353-.055-.47-.18-.22-.236-.111-.71-.054-.995.052-.26.152-.609.463-.646.484-.057 1.046.148 1.526.22.577.088 1.156.159 1.737.212 2.48.226 5.002.19 7.472-.14.45-.06.899-.13 1.345-.21.399-.072.84-.206 1.08.206.166.281.188.657.162.974a.544.544 0 01-.169.364zm-6.159 3.9c-.862.37-1.84.788-3.109.788a5.884 5.884 0 01-1.569-.217l.877 9.004c.065.78.717 1.38 1.5 1.38 0 0 1.243.065 1.658.065.447 0 1.786-.065 1.786-.065.783 0 1.434-.6 1.499-1.38l.94-9.95a3.996 3.996 0 00-1.322-.238c-.826 0-1.491.284-2.26.613z"/></svg><span>Buy Me a Coffee</span><span class="arrow" aria-hidden="true">↗</span></a></li>
+<li><a class="donation-button buymeacoffee" href="https://buymeacoffee.com/adamch"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.25-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 00-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 00-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.218.05 2.437.01 3.65-.118.299-.033.598-.073.896-.119.352-.054.578-.513.474-.834-.124-.383-.457-.531-.834-.473-.466.074-.96.108-1.382.146-1.177.08-2.358.082-3.536.006a22.228 22.228 0 01-1.157-.107c-.086-.01-.18-.025-.258-.036-.243-.036-.484-.08-.724-.13-.111-.027-.111-.185 0-.212h.005c.277-.06.557-.108.838-.147h.002c.131-.009.263-.032.394-.048a25.076 25.076 0 013.426-.12c.674.019 1.347.067 2.017.144l.228.031c.267.04.533.088.798.145.392.085.895.113 1.07.542.055.137.08.288.111.431l.319 1.484a.237.237 0 01-.199.284h-.003c-.037.006-.075.01-.112.015a36.704 36.704 0 01-4.743.295 37.059 37.059 0 01-4.699-.304c-.14-.017-.293-.042-.417-.06-.326-.048-.649-.108-.973-.161-.393-.065-.768-.032-1.123.161-.29.16-.527.404-.675.701-.154.316-.199.66-.267 1-.069.34-.176.707-.135 1.056.087.753.613 1.365 1.37 1.502a39.69 39.69 0 0011.343.376.483.483 0 01.535.53l-.071.697-1.018 9.907c-.041.41-.047.832-.125 1.237-.122.637-.553 1.028-1.182 1.171-.577.131-1.165.2-1.756.205-.656.004-1.31-.025-1.966-.022-.699.004-1.556-.06-2.095-.58-.475-.458-.54-1.174-.605-1.793l-.731-7.013-.322-3.094c-.037-.351-.286-.695-.678-.678-.336.015-.718.3-.678.679l.228 2.185.949 9.112c.147 1.344 1.174 2.068 2.446 2.272.742.12 1.503.144 2.257.156.966.016 1.942.053 2.892-.122 1.408-.258 2.465-1.198 2.616-2.657.34-3.332.683-6.663 1.024-9.995l.215-2.087a.484.484 0 01.39-.426c.402-.078.787-.212 1.074-.518.455-.488.546-1.124.385-1.766zm-1.478.772c-.145.137-.363.201-.578.233-2.416.359-4.866.54-7.308.46-1.748-.06-3.477-.254-5.207-.498-.17-.024-.353-.055-.47-.18-.22-.236-.111-.71-.054-.995.052-.26.152-.609.463-.646.484-.057 1.046.148 1.526.22.577.088 1.156.159 1.737.212 2.48.226 5.002.19 7.472-.14.45-.06.899-.13 1.345-.21.399-.072.84-.206 1.08.206.166.281.188.657.162.974a.544.544 0 01-.169.364zm-6.159 3.9c-.862.37-1.84.788-3.109.788a5.884 5.884 0 01-1.569-.217l.877 9.004c.065.78.717 1.38 1.5 1.38 0 0 1.243.065 1.658.065.447 0 1.786-.065 1.786-.065.783 0 1.434-.6 1.499-1.38l.94-9.95a3.996 3.996 0 00-1.322-.238c-.826 0-1.491.284-2.26.613z"/></svg><span>Buy Me a Coffee</span><span class="arrow" aria-hidden="true">↗</span></a><small class="donation-note">guest checkout available</small></li>
 <li><a class="donation-button paypal" href="https://www.paypal.com/donate/?business=KLHSZPXTSVSAU&amp;no_recurring=0&amp;item_name=I%27ve+donated+to+lots+of+small+creators+for+their+useful+little+tools%2C+now+I+create+them.+Dig+one?+I%27d+love+your+support.&amp;currency_code=AUD"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M15.607 4.653H8.941L6.645 19.251H1.82L4.862 0h7.995c3.754 0 6.375 2.294 6.473 5.513-.648-.478-2.105-.86-3.722-.86m6.57 5.546c0 3.41-3.01 6.853-6.958 6.853h-2.493L11.595 24H6.74l1.845-11.538h3.592c4.208 0 7.346-3.634 7.153-6.949a5.24 5.24 0 0 1 2.848 4.686M9.653 5.546h6.408c.907 0 1.942.222 2.363.541-.195 2.741-2.655 5.483-6.441 5.483H8.714Z"/></svg><span>Donate with PayPal</span><span class="arrow" aria-hidden="true">↗</span></a></li></ul>
           </section>
           <p class="other-projects">More things I made: <a href="https://adamch.com/portfolio/">browse the portfolio <span aria-hidden="true">↗</span></a></p>
@@ -109,5 +116,6 @@
     </main>
     <footer class="site-footer"><span>Adam Chesters</span><div><a href="https://adamch.com/">adamch.com</a><a href="https://github.com/AdamChesters/adambrain">GitHub</a><a href="https://discord.gg/fs4WyaQPA">Discord</a></div></footer>
   </div>
+  <script src="./landing.js?v=080.1" defer></script>
 </body>
 </html>
