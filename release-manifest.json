@@ -1,5 +1,5 @@
 {
-  "revision": "105.2",
+  "revision": "106.1",
   "external_asset_paths": [
     "/assets/",
     "/studio031/data/"
@@ -42,12 +42,12 @@
       "sha256": "a9a3d7d7b86e6c01400ee166b1a477dd043b2f9193160f0ff3de5b197c1a7e2a"
     },
     "web/index.html": {
-      "bytes": 16659,
-      "sha256": "20f6d19240c645c25aa647f1674d1ecd254d794e2f2283510d2d1c8b6c20ed66"
+      "bytes": 11696,
+      "sha256": "5cec5c6e3b80ebfe0e6f61d904388edd91d597d483b32d44415bd4a2344dab7d"
     },
     "web/landing.css": {
-      "bytes": 9177,
-      "sha256": "e782314a3bc6c03dc6d7aa80a35916d4c0d1df58ae8371af5c4debfcd3e08113"
+      "bytes": 9859,
+      "sha256": "54cf85e7e780a23ab2f5ec8cb76343957d23f48cef302861be921078cb320b88"
     },
     "web/landing.js": {
       "bytes": 1603,

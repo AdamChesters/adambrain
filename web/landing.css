@@ -30,3 +30,6 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;--wing:max(22
 .article-hero{padding-bottom:0}
 .hero-subtext{color:var(--muted);font-size:clamp(17px,1.8vw,22px);line-height:1.5;text-align:center;margin:0;text-wrap:balance}
 @media(max-width:650px){.article-hero .standfirst{margin-top:24px;font-size:27px}.hero-subtext{font-size:18px}}
+
+/* Support section. */
+.support>p a{text-decoration:underline;text-underline-offset:4px}.support .donation-links{justify-content:center;margin:24px 0;gap:16px}.support .donation-links li{flex:0 1 auto}.support .donation-button{flex-direction:column;gap:2px;justify-content:center;padding:12px 18px;min-height:70px;background:transparent;text-align:center;font-size:14px;font-weight:400;border-color:var(--muted)}.support .donation-button:hover{background:var(--panel);border-color:var(--accent)}.support-button-note{display:block}.support .donation-links li a{height:100%}@media(max-width:650px){.support .donation-links{align-items:stretch}.support .donation-links li{flex:auto}}
