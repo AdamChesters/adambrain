@@ -1,5 +1,5 @@
 {
-  "revision": "100.1",
+  "revision": "105.2",
   "external_asset_paths": [
     "/assets/",
     "/studio031/data/"
@@ -14,16 +14,16 @@
       "sha256": "7f3bbd1e8cab430a7c8d761a25e14633ee3a5439da3aa30f87a0c5014580a453"
     },
     "README.md": {
-      "bytes": 3072,
-      "sha256": "9aff8754b67e957e3252275163ac5fe4ee1785985cdef895d6d25345996946c8"
+      "bytes": 3144,
+      "sha256": "7eb610d52089065b71f7f03a9bda9b070ef9771a59418564ace6723b9e469c55"
     },
     "scripts/package-site.py": {
-      "bytes": 2476,
-      "sha256": "bc8ab00e8d3245b2e25407526c6bae1ff1e71e260ca299af3a6ddd0d74d4dd68"
+      "bytes": 2643,
+      "sha256": "c17302d547513420b542cb65bdd5b9dfcbf1317bf3d752a1b00439994a2245ab"
     },
     "scripts/serve.py": {
-      "bytes": 2217,
-      "sha256": "f983bb178051fa80d074383f75ed0439dc5ad5ef0d189f4de3dae4ca4205a937"
+      "bytes": 2866,
+      "sha256": "7968a5f3036ed05ca535648aa860029c685a9b3627b436fcedeee8465bacc94e"
     },
     "web/404.html": {
       "bytes": 497,
@@ -42,12 +42,12 @@
       "sha256": "a9a3d7d7b86e6c01400ee166b1a477dd043b2f9193160f0ff3de5b197c1a7e2a"
     },
     "web/index.html": {
-      "bytes": 16565,
-      "sha256": "0c604351fc3163fd84ca52b60a04e478c8d792ce41b850358da67c04b9719cb7"
+      "bytes": 16659,
+      "sha256": "20f6d19240c645c25aa647f1674d1ecd254d794e2f2283510d2d1c8b6c20ed66"
     },
     "web/landing.css": {
-      "bytes": 7855,
-      "sha256": "ebfe4472604e102d71f4c59e7945f07e4aa9ec24ebda4726a866ee1069f1890f"
+      "bytes": 9177,
+      "sha256": "e782314a3bc6c03dc6d7aa80a35916d4c0d1df58ae8371af5c4debfcd3e08113"
     },
     "web/landing.js": {
       "bytes": 1603,
@@ -66,8 +66,8 @@
       "sha256": "0c99c51dc471862c3160c2f0ceb89f25009d0d19376d44e21ae530f5e278c399"
     },
     "web/studio031/index.html": {
-      "bytes": 9227,
-      "sha256": "28f96e5bc99ac0cbb82149e15b3674b0fdde1c360aa2eb1ec43b2d9a1ec78409"
+      "bytes": 9219,
+      "sha256": "3e7f4dab43977cbc8a59aef6720bb978ac8841c0a0d7fe24b779556ed1430f0a"
     },
     "web/studio031/loading-ui.js": {
       "bytes": 1569,
@@ -112,6 +112,10 @@
     "web/studio031/vendor/three.module.js": {
       "bytes": 662772,
       "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+    },
+    "scripts/mosaic_backdrop.py": {
+      "bytes": 718,
+      "sha256": "08f3f6ccb21ff1d5a67e803855c1a095c7013039fe62353257f8ae41bb8ad3a9"
     }
   }
 }

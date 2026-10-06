@@ -52,6 +52,7 @@ Assemble a local deployment folder without adding its images or data to Git:
 python3 scripts/package-site.py --assets-directory /path/to/adambrain-assets --output /path/to/new-site-folder
 ```
 
+Packaging generates the mirrored backdrop from the supplied MRI mosaic.
 Deploy that assembled folder to Cloudflare Pages using Direct Upload. Only the
 landing assets and compressed viewer payloads are packaged; raw acquisitions,
 modelling work and preview alternatives are excluded. For a custom subdomain,

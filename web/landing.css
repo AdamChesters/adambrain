@@ -21,3 +21,12 @@
 .mri-banner{margin:0 0 26px}.mri-banner img{display:block;width:100%;height:auto}.mri-banner figcaption,.mri-mosaic figcaption{text-align:center}
 
 .mri-mosaic{margin:0 0 26px}.mri-mosaic img{display:block;width:100%;height:auto;aspect-ratio:1}
+
+/* Mosaic wings and introduction. */
+
+body::before{content:"";position:fixed;inset:0;pointer-events:none;--wing:max(22px,calc((100% - 1000px)/2));background:url("./assets/brain-mri-mosaic-mirrored.svg?v=105.2") left top/1440px 1440px repeat;opacity:1;mask-image:linear-gradient(to right,rgba(0,0,0,.96) 0%,rgba(0,0,0,.90) calc(var(--wing)*.15),rgba(0,0,0,.68) calc(var(--wing)*.35),rgba(0,0,0,.36) calc(var(--wing)*.55),rgba(0,0,0,.12) calc(var(--wing)*.75),rgba(0,0,0,.025) calc(var(--wing)*.90),transparent var(--wing),transparent calc(100% - var(--wing)),rgba(0,0,0,.025) calc(100% - var(--wing)*.90),rgba(0,0,0,.12) calc(100% - var(--wing)*.75),rgba(0,0,0,.36) calc(100% - var(--wing)*.55),rgba(0,0,0,.68) calc(100% - var(--wing)*.35),rgba(0,0,0,.90) calc(100% - var(--wing)*.15),rgba(0,0,0,.96) 100%)}
+.site-shell{position:relative}
+.article-hero .standfirst{color:var(--ink);font-size:clamp(25px,3vw,38px);font-weight:600;line-height:1.22;letter-spacing:-.025em;border-top:0;padding-top:0;max-width:880px;margin:30px 0 12px;text-wrap:balance}
+.article-hero{padding-bottom:0}
+.hero-subtext{color:var(--muted);font-size:clamp(17px,1.8vw,22px);line-height:1.5;text-align:center;margin:0;text-wrap:balance}
+@media(max-width:650px){.article-hero .standfirst{margin-top:24px;font-size:27px}.hero-subtext{font-size:18px}}

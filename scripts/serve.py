@@ -1,5 +1,6 @@
 """Serve viewer code with optional same-origin assets from a separate directory."""
 import argparse
+from mosaic_backdrop import build_backdrop
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -14,6 +15,20 @@ class AssetHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, assets_directory=None, **kwargs):
         self.assets_directory = assets_directory
         super().__init__(*args, **kwargs)
+
+    def do_GET(self):
+        if (urlsplit(self.path).path == '/assets/brain-mri-mosaic-mirrored.svg'
+                and self.assets_directory):
+            mosaic = self.assets_directory / 'assets/brain-mri-mosaic.webp'
+            if mosaic.is_file():
+                payload = build_backdrop(mosaic)
+                self.send_response(200)
+                self.send_header('Content-Type', 'image/svg+xml')
+                self.send_header('Content-Length', str(len(payload)))
+                self.end_headers()
+                self.wfile.write(payload)
+                return
+        super().do_GET()
 
     def translate_path(self, path):
         url_path = unquote(urlsplit(path).path)

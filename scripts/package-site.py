@@ -2,6 +2,7 @@
 import argparse
 import shutil
 import json
+from mosaic_backdrop import build_backdrop
 from pathlib import Path
 
 parser = argparse.ArgumentParser()
@@ -29,6 +30,8 @@ landing_assets = (
 (output / 'assets').mkdir()
 for name in landing_assets:
     shutil.copy2(assets / 'assets' / name, output / 'assets' / name)
+(output / 'assets/brain-mri-mosaic-mirrored.svg').write_bytes(
+    build_backdrop(assets / 'assets/brain-mri-mosaic.webp'))
 data = assets / 'studio031/data'
 manifest = json.loads((data / 'transport.json').read_text())
 (output / 'studio031/data/assets').mkdir(parents=True)
