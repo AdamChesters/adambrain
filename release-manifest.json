@@ -1,5 +1,5 @@
 {
-  "revision": "106.1",
+  "revision": "107.2",
   "external_asset_paths": [
     "/assets/",
     "/studio031/data/"
@@ -34,20 +34,20 @@
       "sha256": "7e1f088e35cde0d042e87a511fa9ddafb75530f120430054f6b73f7ce55694aa"
     },
     "web/_redirects": {
-      "bytes": 82,
-      "sha256": "80b27e9db5caa9b1123d44ee5346713762ed77c3f11d5adce88c97a622101b71"
+      "bytes": 76,
+      "sha256": "3f827506e34f061967e3826e501aa0e28a085872a7a9f2faf162a3762cfca3ce"
     },
     "web/credits.html": {
-      "bytes": 5467,
-      "sha256": "a9a3d7d7b86e6c01400ee166b1a477dd043b2f9193160f0ff3de5b197c1a7e2a"
+      "bytes": 6109,
+      "sha256": "1619e316115336f5ed55dca4d74d940a295546d582692157cbf42ec245263332"
     },
     "web/index.html": {
-      "bytes": 11696,
-      "sha256": "5cec5c6e3b80ebfe0e6f61d904388edd91d597d483b32d44415bd4a2344dab7d"
+      "bytes": 12919,
+      "sha256": "a5c804767efc7ed5509bacb72a759d31dd257f910a268e77ba8607389373fcc3"
     },
     "web/landing.css": {
-      "bytes": 9859,
-      "sha256": "54cf85e7e780a23ab2f5ec8cb76343957d23f48cef302861be921078cb320b88"
+      "bytes": 10048,
+      "sha256": "51ae91d92ca89619c0bd26d19fcd754362b5c558f585fad527ffde98e1215140"
     },
     "web/landing.js": {
       "bytes": 1603,
@@ -66,8 +66,8 @@
       "sha256": "0c99c51dc471862c3160c2f0ceb89f25009d0d19376d44e21ae530f5e278c399"
     },
     "web/studio031/index.html": {
-      "bytes": 9219,
-      "sha256": "3e7f4dab43977cbc8a59aef6720bb978ac8841c0a0d7fe24b779556ed1430f0a"
+      "bytes": 10274,
+      "sha256": "be5601d3a7fb464487adce8f085971f69841f6e84fccb4084532cab67684fda7"
     },
     "web/studio031/loading-ui.js": {
       "bytes": 1569,
@@ -116,6 +116,14 @@
     "scripts/mosaic_backdrop.py": {
       "bytes": 718,
       "sha256": "08f3f6ccb21ff1d5a67e803855c1a095c7013039fe62353257f8ae41bb8ad3a9"
+    },
+    "web/robots.txt": {
+      "bytes": 70,
+      "sha256": "587fef7396084eb7cc14b6e14762dd3e2c175f0ef9acfc8932922e7363f0e5b2"
+    },
+    "web/sitemap.xml": {
+      "bytes": 277,
+      "sha256": "7a963999c87c872e9f329c5e5c8874baf75dc51af552dd0633e058ce78de60cf"
     }
   }
 }

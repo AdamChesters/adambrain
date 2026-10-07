@@ -5,21 +5,25 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#151616">
-  <title>/AdamBrain | Adam Chesters</title>
-  <meta name="description" content="I was left unsupervised with 15,191 images of my head. Explore the interactive viewer.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./landing.css?v=107.2">
+  <title>AdamBrain: An AI-assisted 3D portrait from MRI scans</title>
+  <meta name="description" content="Explore Adam Chesters’ MRI-derived brain and head in an interactive 3D viewer. A personal project combining AI, medical imaging and browser visualization.">
   <link rel="canonical" href="https://brain.adamch.com/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="/AdamBrain | Adam Chesters">
-  <meta property="og:description" content="I was left unsupervised with 15,191 images of my head. My brain made my brain a side project. Send help">
+  <meta property="og:site_name" content="AdamBrain">
+  <meta property="og:title" content="AdamBrain: An AI-assisted 3D portrait from MRI scans">
+  <meta property="og:description" content="Explore Adam Chesters’ MRI-derived brain and head in an interactive 3D viewer. A personal project combining AI, medical imaging and browser visualization.">
   <meta property="og:url" content="https://brain.adamch.com/">
   <meta property="og:image" content="https://brain.adamch.com/assets/brain-social-linkedin.jpg?v=100.1">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="627">
-  <meta property="og:image:alt" content="//AdamBrain: I was left unsupervised with 15,191 images of my head. Interactive viewer at brain.adamch.com.">
-  <meta name="twitter:image" content="https://brain.adamch.com/assets/brain-social-x.jpg?v=100.1">
+  <meta property="og:image:alt" content="Adam Chesters beside a 3D portrait reconstructed from his MRI scans.">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./landing.css?v=106.1">
+  <meta name="twitter:title" content="AdamBrain: An AI-assisted 3D portrait from MRI scans">
+  <meta name="twitter:description" content="Explore Adam Chesters’ MRI-derived brain and head in an interactive 3D viewer. A personal project combining AI, medical imaging and browser visualization.">
+  <meta name="twitter:image" content="https://brain.adamch.com/assets/brain-social-x.jpg?v=100.1">
+  <meta name="twitter:image:alt" content="Adam Chesters beside a 3D portrait reconstructed from his MRI scans.">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -39,29 +43,29 @@
           <div class="portrait-pair">
             <figure class="portrait-photo"><img src="./assets/adam-photo-square.webp?v=091.1" width="650" height="650" fetchpriority="high" alt="Adam Chesters, facing right in a navy jacket and light blue shirt."></figure>
           <figure class="article-cover">
-            <a href="/viewer" aria-label="Open Adambrain visualiser"><video id="cover-video" autoplay muted loop playsinline preload="metadata" poster="./assets/brain-oblique-hold.png?v=091.1" width="320" height="320" aria-label="An oblique view rotating gently as skin and bone fade away, pause, and return."><source src="./assets/brain-cover-loop.webm?v=091.1" type="video/webm"><source src="./assets/brain-cover-loop.mp4?v=091.1" type="video/mp4"><img src="./assets/brain-oblique-hold.png" width="320" height="320" alt="An oblique view of the MRI-derived brain."></video><img id="cover-gif" hidden data-src="./assets/brain-cover-loop.gif?v=091.1" width="320" height="320" alt="An oblique view rotating as skin and bone fade away, pause, and return."></a>
+            <a href="/studio031/" aria-label="Open Adambrain visualiser"><video id="cover-video" autoplay muted loop playsinline preload="metadata" poster="./assets/brain-oblique-hold.png?v=091.1" width="320" height="320" aria-label="An oblique view rotating gently as skin and bone fade away, pause, and return."><source src="./assets/brain-cover-loop.webm?v=091.1" type="video/webm"><source src="./assets/brain-cover-loop.mp4?v=091.1" type="video/mp4"><img src="./assets/brain-oblique-hold.png" width="320" height="320" alt="An oblique view of the MRI-derived brain."></video><img id="cover-gif" hidden data-src="./assets/brain-cover-loop.gif?v=091.1" width="320" height="320" alt="An oblique view rotating as skin and bone fade away, pause, and return."></a>
           </figure>
           </div>
           <p class="standfirst">I was left unsupervised with 15,191 images of my head.</p>
           <p class="hero-subtext">My brain made my brain a side project. Send help</p>
         </div>
         <div class="article-body">
-
-          <div class="viewer-actions"><a class="button primary" href="/viewer">Open visualiser <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/AdamChesters/adambrain">GitHub repository <span aria-hidden="true">↗</span></a><a class="button discord" href="https://discord.gg/fs4WyaQPA">Join Discord <span aria-hidden="true">↗</span></a></div>
+          <div class="viewer-actions"><a class="button primary" href="/studio031/">Open visualiser <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/AdamChesters/adambrain">GitHub repository <span aria-hidden="true">↗</span></a><a class="button discord" href="https://discord.gg/fs4WyaQPA">Join Discord <span aria-hidden="true">↗</span></a></div>
           <div class="prose project-story">
+            <blockquote class="project-intro-quote"><p><em>I’m turning my own MRI scans into an interactive 3D portrait of my brain and head, with help from AI and open-source imaging tools. You can rotate it, explore tissue layers and see how the scan slices become a browser-based model.</em></p></blockquote>
             <p>In 2023, I suddenly went blind. That was a fun day. Not many things cause that, none good.</p>
             <p>It could have been worse.</p>
-            <p>Turns out, my body tried to eat my optic nerves, but I won. 20/20 vision baby, and slim to zero chance of recurrence. I have a rare autoimmune disorder, <a href="https://www.msaustralia.org.au/nmosd-and-mogad/myelin-oligodendrocyte-glycoprotein-antibody-disorders/">MOGAD</a>, and some of the worlds best studying/fighting it are right here in Australia. I can&#x27;t thank about 8 seperate teams at the <a href="https://www.thermh.org.au/">Royal Melbourne hospital</a> enough.</p>
+            <p>Turns out, my body tried to eat my optic nerves, but I won. 20/20 vision baby, and slim to zero chance of recurrence. I have a rare autoimmune disorder, <a href="https://www.msaustralia.org.au/nmosd-and-mogad/myelin-oligodendrocyte-glycoprotein-antibody-disorders/">MOGAD</a>, and some of the world’s best studying/fighting it are right here in Australia. I can&#x27;t thank about 8 separate teams at the <a href="https://www.thermh.org.au/">Royal Melbourne hospital</a> enough.</p>
             <p class="reaction-gif"><img src="https://y.getyarn.io/8c882b43-e479-4d65-b14d-5fd8017d6628_text.gif" loading="lazy" alt="Thank you" referrerpolicy="no-referrer"></p>
             <p>Years later, one day I got bored. &quot;Wait, I have a dvd with a scan of my brain, and I play with data&quot;. Could I interpolate something and build a custom model? 15,191 DICOM MRI images later...</p>
             <p>The ultimate goal? Print a 3d model. That flashes for various reasons. Maybe when there&#x27;s lightning. Or I get a quad-kill in <a href="https://www.team17.com/games/wardogs">Wardogs</a>. Or when my <a href="https://justkasz.com">wife&#x27;s business</a> gets another big, tasty order (that&#x27;s happening a <em>lot</em>).</p>
-            <p>The thought of getting stimulus from my brain but smol, tickles me. There&#x27;s something about it being visual stimulus, no less, thats deeply, darkly ironic.  (Fuck you, <a href="https://www.msaustralia.org.au/nmosd-and-mogad/myelin-oligodendrocyte-glycoprotein-antibody-disorders/">MOGAD</a>. I win.)</p>
+            <p>The thought of getting stimulus from my brain but smol, tickles me. There&#x27;s something about it being visual stimulus, no less, that’s deeply, darkly ironic.  (Fuck you, <a href="https://www.msaustralia.org.au/nmosd-and-mogad/myelin-oligodendrocyte-glycoprotein-antibody-disorders/">MOGAD</a>. I win.)</p>
             <p>once we have it, we can do some iiinterestin things. Animations. More interactivity. Maybe an educational visualisation of what <a href="https://www.msaustralia.org.au/nmosd-and-mogad/myelin-oligodendrocyte-glycoprotein-antibody-disorders/">MOGAD</a> was up to. Etc.</p>
             <p>Follow me on <a href="https://www.linkedin.com/in/adamchesters/">LinkedIn</a> or <a href="https://x.com/_AChesters">X.com</a> to keep abreast of updates.</p>
           </div>
           <section id="about" class="about prose" aria-labelledby="about-title">
             <p class="eyebrow">About the project</p>
-            <h2 id="about-title">From scan slices to a portrait.</h2>
+            <h2 id="about-title">Turning MRI scans into an interactive 3D portrait</h2>
             <figure class="mri-banner"><img src="./assets/brain-mri-cross-sections.jpg?v=083.1" width="960" height="360" loading="lazy" alt="Actual T1 MRI cross-sections, left to right: sagittal, axial and coronal."><figcaption>Yes, this is me</figcaption></figure>
             <p>This portrait uses the head study, acquired on a <a href="https://www.siemens-healthineers.com/en-au/magnetic-resonance-imaging/0-35-to-1-5t-mri-scanner/magnetom-sola">Siemens MAGNETOM Sola 1.5 T</a> MRI scanner at the <a href="https://www.thermh.org.au/">Royal Melbourne hospital</a></p>
             <p>A lot of those 15,191 images show the same anatomy at different times or from different angles. They aren’t all separate scans with new detail. For example, the angiography sequence contains 40 original volumes and 39 background-subtracted volumes following contrast through the vessels.</p>
@@ -74,14 +78,15 @@
             </ul>
             <h3>How it comes together</h3>
             <figure class="mri-mosaic"><img src="./assets/brain-mri-mosaic.webp?v=083.1" width="1440" height="1440" loading="lazy" alt="A 20 by 20 checkerboard of 400 actual MRI cross-sections, mixing T1, contrast angiography and Dixon-water eye scans."><figcaption>Yep, all still me</figcaption></figure>
-
             <p>Slices were ordered by their recorded position and assembled into 3D volumes. Compatible head scans were re-aligned in the same physical space, and compared to estimate the tissue layers. Vessel signal is combined across the early contrast phases; different MRI contrasts support different structures, rather than being blindly added together.</p>
             <p>The resulting volumes are compressed for the browser. The viewer samples through them to build the image you see, with separate colour and opacity controls. <a href="https://surfer.nmr.mgh.harvard.edu/">FreeSurfer</a> helps estimate brain tissues; these boundaries and the vessel labels remain interpretations of the scans.</p>
+            <h3>Where AI helped</h3>
+            <p>This project combines AI-assisted development with MRI reconstruction and browser visualization. The scan slices provide the source data; imaging tools help align them and estimate tissue boundaries. The model is an interpretation of my scans, not a diagnostic model.</p>
             <h3>What’s being worked on</h3>
             <p>A more performant rendering method.<br>
               More refined detail from integrating more studies/scans.<br>
               Smoothing between slices.<br>
-              A.I generated best-guest fill in where gaps exist (already lightly leveraged).<br>
+              AI-assisted experiments with gap filling.<br>
               A part / structure picker and index, highlighting system.<br>
               More performant rendering for mobile devices.<br>
               Finer vessel continuity and tissue boundaries.</p>
@@ -91,7 +96,7 @@
               Whatever you come up with.</p>
           </section>
           <section id="credits" class="credits prose" aria-labelledby="credits-title">
-            <h2 id="credits-title"><a href="./credits.html">Credits + software used <span aria-hidden="true">↗</span></a></h2>
+            <h2 id="credits-title"><a href="/credits">Credits + software used <span aria-hidden="true">↗</span></a></h2>
           </section>
           <section id="support" class="support" aria-labelledby="support-title">
 <h2 id="support-title">Support</h2>

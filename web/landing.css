@@ -33,3 +33,5 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;--wing:max(22
 
 /* Support section. */
 .support>p a{text-decoration:underline;text-underline-offset:4px}.support .donation-links{justify-content:center;margin:24px 0;gap:16px}.support .donation-links li{flex:0 1 auto}.support .donation-button{flex-direction:column;gap:2px;justify-content:center;padding:12px 18px;min-height:70px;background:transparent;text-align:center;font-size:14px;font-weight:400;border-color:var(--muted)}.support .donation-button:hover{background:var(--panel);border-color:var(--accent)}.support-button-note{display:block}.support .donation-links li a{height:100%}@media(max-width:650px){.support .donation-links{align-items:stretch}.support .donation-links li{flex:auto}}
+
+.project-intro-quote{margin:0 0 32px;padding:8px 0 8px 22px;border-left:2px solid var(--accent);color:var(--ink)}.project-intro-quote p{margin:0}.project-intro-quote em{font-style:italic}
