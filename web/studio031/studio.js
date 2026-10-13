@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import {createLoadingUI} from './loading-ui.js?v=070.5';
 const loading=createLoadingUI();
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {HybridVolume} from './hybrid-volume.js?v=086.8';
+import {HybridVolume} from './hybrid-volume.js?v=087.1';
 import {createFrameScheduler} from './scheduler.js?v=035.1';
 import {createRenderQuality} from './render-quality.js?v=064.1';
 const $=id=>document.getElementById(id),host=$('viewport');
@@ -96,6 +96,8 @@ window.inspectStudio=publish;window.reconstructionTest={renderer,camera,controls
 for(const b of document.querySelectorAll('[data-tab]'))b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(t=>t.classList.toggle('active',t===b));document.querySelectorAll('[data-pane]').forEach(p=>p.hidden=p.dataset.pane!==b.dataset.tab);};
 $('panelToggle').onclick=()=>{$('panel').hidden=!$('panel').hidden;document.body.classList.toggle('panel-closed',$('panel').hidden);$('panelToggle').setAttribute('aria-expanded',String(!$('panel').hidden));resize();};$('motionToggle').onclick=()=>{controls.autoRotate=!controls.autoRotate;intro.motionCancelled=!controls.autoRotate;refreshMotion();interaction();};
 $('fadeToggle').onclick=()=>{if(intro.active){intro.paused=!intro.paused;intro.last=performance.now();refreshFading();apply();}else if(current)startIntro();};
+// Touching any control pauses the fading animation, as the stop button does, so it cannot fight the user's change.
+const pauseFading=e=>{if(intro.active&&!intro.paused&&intro.phase!=='loading'&&e.target.closest?.('input,select,textarea')){intro.paused=true;intro.last=performance.now();refreshFading();}};for(const type of ['pointerdown','keydown','input'])$('panel').addEventListener(type,pauseFading,true);
 for(const id of savedControls)$(id).addEventListener('input',()=>{if(id==='renderQuality'){quality.setMode($(id).value);warmups=0;}if(id==='orbitSpeed')controls.autoRotateSpeed=.22*+$(id).value;if($(id+'Value'))$(id+'Value').value=$(id).value+(id==='orbitSpeed'?'×':'%');apply();});
 $('defaultView').onclick=()=>{stopIntro();defaultFraming=true;controls.autoRotate=false;for(const [k,[_name,visible,opacity,color]]of Object.entries(defaults))Object.assign(layer(k),{visible,opacity,color,lighting:1});state.brainDepth=[0,.5];$('orbitSpeed').value=6;$('renderQuality').value='auto';warmups=0;camera.position.copy(controls.target).add(new THREE.Vector3(0,.08,-.38));updateAppearance();$('panel').hidden=false;document.body.classList.remove('panel-closed');$('panelToggle').setAttribute('aria-expanded','true');resize();controls.autoRotate=false;refreshMotion();$('sessionStatus').value='Default view restored.';apply();if(current)startIntro();};
 $('saveSession').onclick=()=>{try{localStorage.setItem(rememberKey,JSON.stringify({version:2,study:'head',state,camera:camera.position.toArray(),target:controls.target.toArray(),controls:Object.fromEntries(savedControls.map(id=>[id,$(id).value]))}));$('sessionStatus').value='Saved in this browser.';}catch(e){$('sessionStatus').value=e.message;}};

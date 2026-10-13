@@ -62,12 +62,12 @@
       "sha256": "2c7fe2bfb9b12348a7ee43d66556f5a1a9574683568a48ec2b6ea367e67ea8e1"
     },
     "web/studio031/hybrid-volume.js": {
-      "bytes": 29407,
-      "sha256": "4cda63976a3e500be732cac8ce48d88366db2707a1e72f04231ad0b76ac1a32d"
+      "bytes": 31269,
+      "sha256": "a3b35d535a525ba23ccabae5a493b66233ce477b41854b98124b1f5d22f4b404"
     },
     "web/studio031/index.html": {
       "bytes": 10274,
-      "sha256": "d360a50b3ed845d2c342e430facd9ddfc71b8cdb30a73e054fb924888a9bd560"
+      "sha256": "5113a190a6cb4feb5eb520cd01c178c6b89b0d3f66d8416274cb59169999f99d"
     },
     "web/studio031/loading-ui.js": {
       "bytes": 3663,
@@ -83,19 +83,19 @@
     },
     "web/studio031/source-data.js": {
       "bytes": 7410,
-      "sha256": "216aa1dfdd3f0fdc359f96a2f9362005c976b1f6377b7efa1c3deb5c28cdbe1a"
+      "sha256": "b43680e2ad3bc212282b00314ea029f68a4907e4fb0a4a8c9c3028b31e027933"
     },
     "web/studio031/structure-volumes.js": {
       "bytes": 26846,
-      "sha256": "5a8adc8fb080b589975ee8bbf9731cc661e52f57643469561529d58e00dcaf39"
+      "sha256": "17ae2a197bee28dbd78ee1d4df8b39db0e9043b0acd916177d17e48811956a07"
     },
     "web/studio031/studio.css": {
       "bytes": 6734,
       "sha256": "a4e0a9b6000406778c43dc8877739c48c2ff219f7ba5f7b341b6bfbd98d3f79f"
     },
     "web/studio031/studio.js": {
-      "bytes": 27743,
-      "sha256": "639f32549fcbe6a1101301b8146cd76293b85ec581392c71aed5968447a9a9d7"
+      "bytes": 28153,
+      "sha256": "0306bde81a678b4a7c62ab03ae7bacf18f31989531f53260ee31962c960b7d6a"
     },
     "web/studio031/vendor/THREE-LICENSE.txt": {
       "bytes": 1081,
@@ -131,7 +131,11 @@
     },
     "web/studio031/lite-mode.js": {
       "bytes": 2621,
-      "sha256": "b3bd86c84dd7720c60edc13455e5cc778c5ae013efde296599e5873fbf427ebd"
+      "sha256": "cbf72f28c98bf0eacaa8bb4c7b210141e8f11e11ea3db2d09e912a0239122ada"
+    },
+    "web/studio031/baked-volume.js": {
+      "bytes": 10937,
+      "sha256": "9ee497536d6dc264932a893f8f7f1986e6067cd2dbb3fb566a3b9b3e42f30d96"
     }
   }
 }

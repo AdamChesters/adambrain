@@ -1,4 +1,4 @@
-import {reduceSource} from './source-data.js?v=086.8';
+import {reduceSource} from './source-data.js?v=087.1';
 // Lite mode halves every display volume per axis (1/8 memory) for phones and tablets.
 // ?lite=1 forces it, ?lite=0 turns it off; otherwise touch-first devices use it.
 const param=new URLSearchParams(location.search).get('lite');
