@@ -62,12 +62,12 @@
       "sha256": "2c7fe2bfb9b12348a7ee43d66556f5a1a9574683568a48ec2b6ea367e67ea8e1"
     },
     "web/studio031/hybrid-volume.js": {
-      "bytes": 29203,
-      "sha256": "ccb6134633a4ee06d1241a2efa35a12db275843a9c47c5cc809f648eaa870214"
+      "bytes": 28884,
+      "sha256": "4668c69cffde39720bc81d11227b1f26498d0f08076ba280cd9164080fe38abe"
     },
     "web/studio031/index.html": {
       "bytes": 10274,
-      "sha256": "f60df2ce67ee64549a383e270c03b72445a72e115c02a556cb2f0901de750665"
+      "sha256": "f65cc59cf3f2bc76c34124fc5de9a15ba59ef8686ddd92816e2fee391ae9318f"
     },
     "web/studio031/loading-ui.js": {
       "bytes": 1865,
@@ -86,8 +86,8 @@
       "sha256": "2ec9058dfac16ebff350f2fccbc849cc2d08f5cc4b51161d0adad635e56c99f3"
     },
     "web/studio031/structure-volumes.js": {
-      "bytes": 26476,
-      "sha256": "bba3ab2787fb69b53428d435de8edf509464a1f07ccf8a47dd58ae2186d06926"
+      "bytes": 26810,
+      "sha256": "11cab833ecefe4f38295f860abd81cc955a6c85e2944be214d588db5513c0017"
     },
     "web/studio031/studio.css": {
       "bytes": 6734,
@@ -95,7 +95,7 @@
     },
     "web/studio031/studio.js": {
       "bytes": 27665,
-      "sha256": "d3879c9ecbcd6f59c158f7063f07af7a74a2bc65a000741223ac694ce0f202fb"
+      "sha256": "b4fc292ee5d70b8df3b7f3efff2af21e95b1601f7bc40f5ad2f97124d7d0c7a7"
     },
     "web/studio031/vendor/THREE-LICENSE.txt": {
       "bytes": 1081,
@@ -124,6 +124,10 @@
     "web/sitemap.xml": {
       "bytes": 277,
       "sha256": "7a963999c87c872e9f329c5e5c8874baf75dc51af552dd0633e058ce78de60cf"
+    },
+    "web/studio031/volume-memory.js": {
+      "bytes": 1761,
+      "sha256": "f681752c6130b958ffc81973b68a38b320095bc14599e7d84ff7307b1ee20db3"
     }
   }
 }

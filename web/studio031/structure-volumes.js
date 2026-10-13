@@ -1,5 +1,6 @@
 import {sourceBuffer} from './source-data.js?v=086.1';
 import * as THREE from 'three';
+import {halfData,weightBricks,releaseAfterUpload,textureBytes} from './volume-memory.js?v=086.4';
 
 // Extra MRI sources keep native grids. Only annotation weights are interpolated.
 const matrix = rows => new THREE.Matrix4().set(...rows.flat());
@@ -13,13 +14,15 @@ async function json(url) {
   if (!r.ok) throw Error(`Structure manifest: HTTP ${r.status}`);
   return r.json();
 }
-function texture(buffer, dims, weights = false) {
+function texture(buffer, dims, weights = false, release = false) {
   if (buffer.byteLength !== dims.reduce((a,b) => a*b, 1)*4) throw Error('Structure texture size mismatch');
-  const t = new THREE.Data3DTexture(weights ? new Uint8Array(buffer) : new Float32Array(buffer), ...dims);
+  const t = new THREE.Data3DTexture(weights ? new Uint8Array(buffer) : halfData(new Float32Array(buffer)), ...dims);
   t.format = weights ? THREE.RGBAFormat : THREE.RedFormat;
-  t.type = weights ? THREE.UnsignedByteType : THREE.FloatType;
+  t.type = weights ? THREE.UnsignedByteType : THREE.HalfFloatType;
   t.minFilter = t.magFilter = THREE.LinearFilter;
   t.unpackAlignment = 1; t.needsUpdate = true;
+  // Per-source textures are never sliced later, so their CPU copies can go; atlases stay intact.
+  if (release) { if (weights) t.supportBricks = weightBricks(t.image.data, dims); releaseAfterUpload(t); }
   return t;
 }
 function bounds(m, dims) {
@@ -93,8 +96,8 @@ export class StructureVolumes {
       }
       const urls=[...(!entry.sharedT1?[entry.url]:[]),...entry.weights];
       const buffers=await Promise.all(urls.map(url=>sourceBuffer(local(url),signal)));
-      const intensity=entry.sharedT1?null:texture(buffers.shift(),entry.dimensions);
-      const weights=buffers.map(b=>texture(b,entry.dimensions,true));
+      const intensity=entry.sharedT1?null:texture(buffers.shift(),entry.dimensions,false,true);
+      const weights=buffers.map(b=>texture(b,entry.dimensions,true,true));
       return {entry,intensity,weights,m:matrix(entry.voxelIndexToWorld),nativeM:entry.voxelIndexToSpineWorld?matrix(entry.voxelIndexToSpineWorld):null};
     })();
     loadRecord.promise=promise;this.cache.set(id,promise);
@@ -135,7 +138,7 @@ export class StructureVolumes {
     this.u.spineWeights.value=spine?.data.weights[0]||this.zero;
     this.u.headFields.value=this.residentHeadAtlas?.tex||this.zero;
     const im=this.u.headFields.value.image;this.u.headAtlasDims.value.set(im.width,im.height,im.depth);
-    for(const tex of before)if(!used.has(tex)){this.releasedBytes+=tex.image.data.byteLength;tex.dispose();}
+    for(const tex of before)if(!used.has(tex)){this.releasedBytes+=textureBytes(tex);tex.dispose();}
   }
   updateLoadDemand(){
     if(!this.ready)return;
@@ -269,7 +272,7 @@ export class StructureVolumes {
     return [...ids].map(i=>this.keys[i]);
   }
   inspect() {
-    return {retentionMS:this.retentionMS,releasedBytes:this.releasedBytes,residentTextureBytes:[...this.ownedTextures()].reduce((n,t)=>n+t.image.data.byteLength,0),selecting:this.selecting.size,cancellableLoads:this.loadControllers.size,loading:[...this.pending.keys()],loadErrors:Object.fromEntries(this.failures),residentSlots:this.slots.filter(s=>s.data.loaded!==false).map(s=>s.id),spineShading:this.u?.spineSmooth.value?'smooth':'detail',ready:this.ready,error:this.error,enabled:this.enabled,channels:this.keys,opacities:this.u?.exOpacity.value,sources:this.slots.map(s=>({slot:s.id,id:s.data.entry.id,active:this.u[`e${s.index}Enabled`].value,dimensions:s.data.entry.dimensions,gates:s.data.entry.gates,window:s.data.entry.window,indexToWorld:this.u[`e${s.index}Inverse`].value.clone().invert().toArray(),spacing:s.data.entry.spacing,sharedT1:!!s.sharedT1})),occupancy:'Native/inferred response fields; values are not calibrated probabilities',overlap:'continuous visibility-dependent cervical preference; separate native poses retained'};
+    return {retentionMS:this.retentionMS,releasedBytes:this.releasedBytes,residentTextureBytes:[...this.ownedTextures()].reduce((n,t)=>n+textureBytes(t),0),selecting:this.selecting.size,cancellableLoads:this.loadControllers.size,loading:[...this.pending.keys()],loadErrors:Object.fromEntries(this.failures),residentSlots:this.slots.filter(s=>s.data.loaded!==false).map(s=>s.id),spineShading:this.u?.spineSmooth.value?'smooth':'detail',ready:this.ready,error:this.error,enabled:this.enabled,channels:this.keys,opacities:this.u?.exOpacity.value,sources:this.slots.map(s=>({slot:s.id,id:s.data.entry.id,active:this.u[`e${s.index}Enabled`].value,dimensions:s.data.entry.dimensions,gates:s.data.entry.gates,window:s.data.entry.window,indexToWorld:this.u[`e${s.index}Inverse`].value.clone().invert().toArray(),spacing:s.data.entry.spacing,sharedT1:!!s.sharedT1})),occupancy:'Native/inferred response fields; values are not calibrated probabilities',overlap:'continuous visibility-dependent cervical preference; separate native poses retained'};
   }
   shader(activeIds=null) {
     const defs=["uniform sampler3D spineData,spineWeights;"],evaluate=[];
