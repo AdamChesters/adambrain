@@ -17,16 +17,18 @@ export function createLoadingUI() {
     arc.style.strokeDashoffset = percent ? 100 - percent : 0;
     message.textContent = percent >= 95 ? 'Preparing view…' : 'Loading model…';
   };
-  const fail = () => {
+  const fail = reason => {
     if (!active || failed) return;
+    console.error('Model load failed:', reason);
     failed = true;
     overlay.classList.add('failed');
     meter.hidden = true;
-    message.textContent = 'The model could not load.';
+    message.textContent = 'The model could not load.' + (reason ? ' (' + String(reason).slice(0, 160) + ')' : '');
     retry.hidden = false;
   };
   retry.addEventListener('click', () => location.reload());
-  addEventListener('error', fail);
+  addEventListener('error', e => fail('script: ' + (e.message || e.error || 'unknown')));
+  addEventListener('unhandledrejection', e => { if (!window.studioReady) fail('async: ' + (e.reason?.message || e.reason)); });
   return {
     get active() { return active; },
     progress,
