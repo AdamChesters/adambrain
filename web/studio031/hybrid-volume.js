@@ -1,9 +1,9 @@
-import {sourceBuffer,planSourceLoad} from './source-data.js?v=087.4';
-import {lite,liteVolumeGroups,liteStructures,liteCoverage} from './lite-mode.js?v=087.4';
-import {StructureVolumes} from './structure-volumes.js?v=087.4';
-import {halfData,useHalf,scalarBricks,weightBricks,brickDims,threshold,releaseAfterUpload} from './volume-memory.js?v=087.4';
+import {sourceBuffer,planSourceLoad} from './source-data.js?v=087.5';
+import {lite,liteVolumeGroups,liteStructures,liteCoverage} from './lite-mode.js?v=087.5';
+import {StructureVolumes} from './structure-volumes.js?v=087.5';
+import {halfData,useHalf,scalarBricks,weightBricks,brickDims,threshold,releaseAfterUpload} from './volume-memory.js?v=087.5';
 import * as THREE from 'three';
-import {VolumeBaker,bakeFragment,renderFragment} from './baked-volume.js?v=087.4';
+import {VolumeBaker,bakeFragment,renderFragment} from './baked-volume.js?v=087.5';
 const vertex=`varying vec3 p;varying vec3 eye;void main(){p=position;eye=(inverse(modelMatrix)*vec4(cameraPosition,1.)).xyz;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
 const baseFragment=`precision highp float;precision highp sampler3D;
 uniform sampler3D aData,aWeights,hData,hWeights,aRegions;uniform vec4 aLight;uniform vec3 hLight;uniform float faceLight,stepMM;uniform bool nativeSignal;uniform float surfaceContextOpacity,faceContextOpacity;uniform bool facialGrouping;uniform vec3 faceContextColor;
@@ -119,7 +119,7 @@ export class HybridVolume{
  // Default engine: classify into a baked grid, march that. ?engine=legacy keeps the per-sample classifier.
  setupBaked(){
   const q=new URLSearchParams(location.search);this.engine=q.get('engine')==='legacy'?'legacy':'baked';if(this.engine!=='baked')return;
-  this.baker=new VolumeBaker(this.renderer,Number(q.get('cell'))||(lite?2:1));
+  this.baker=new VolumeBaker(this.renderer,Number(q.get('cell'))||(lite?2:1),q.has('slices')?Number(q.get('slices')):lite?24:0);
   const u=this.u;this.bakedMaterial=new THREE.ShaderMaterial({uniforms:{...this.baker.ru,stepMM:u.stepMM,density:u.density,lightGain:u.lightGain,viewProjection:u.viewProjection,offset:u.offset},vertexShader:vertex,fragmentShader:renderFragment,side:THREE.BackSide,transparent:true,depthWrite:true,depthTest:true,depthFunc:THREE.AlwaysDepth});
   const black=()=>new THREE.Color(0,0,0);
   this.bakeColours=[...['aColor','vColor','oColor','rawColor','faceContextColor','brainColor','headColor','deepHeadColor'].map(k=>[k,black()]),['exColor',u.exColor.value.map(black)]];
@@ -128,7 +128,7 @@ export class HybridVolume{
   if(this.engine!=='baked'||this.u.cInspect.value){this.mesh.material=this.variants.get(this.variantKey);return;}
   const key=this.variantKey,fragment=this.fragments.get(key),flair=key.split(',').includes('flair023');
   this.baker.allocate(this.bounds);
-  this.baker.update(this.u,key,{defines:mode=>({...(flair?{INCLUDE_FLAIR:1}:{}),...(mode==='mix'?{BAKE_MIX:1}:{BAKE_COLOR:1})}),fragment:mode=>bakeFragment(fragment,mode)},this.bakeColours);
+  if(this.baker.update(this.u,key,{defines:mode=>({...(flair?{INCLUDE_FLAIR:1}:{}),...(mode==='mix'?{BAKE_MIX:1}:{BAKE_COLOR:1})}),fragment:mode=>bakeFragment(fragment,mode)},this.bakeColours))setTimeout(()=>dispatchEvent(new Event('volume-bake-due')));
   this.baker.ru.jitter.value=this.u.stepMM.value>.5?1:0;this.baker.ru.frame.value=(this.baker.ru.frame.value+1)%64;
   this.mesh.material=this.bakedMaterial;
  }

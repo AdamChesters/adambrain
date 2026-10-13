@@ -62,12 +62,12 @@
       "sha256": "2c7fe2bfb9b12348a7ee43d66556f5a1a9574683568a48ec2b6ea367e67ea8e1"
     },
     "web/studio031/hybrid-volume.js": {
-      "bytes": 31269,
-      "sha256": "c9839b520f179a83316cb3b1acb33c68078417a42efffe9a415f8262aca645b0"
+      "bytes": 31382,
+      "sha256": "09a61b2e27135e1a2ea42fe44b67e7f496ae96f8b3ce69ba3887c34405db9aab"
     },
     "web/studio031/index.html": {
       "bytes": 10274,
-      "sha256": "2bc3533113ca721595bdc33273d837b9d72244d757050f7f6bda3df6a6c1d218"
+      "sha256": "ab90ab789611e95ba1835b2ea0f72c19a693378e0c70940200d54f07a039f4d6"
     },
     "web/studio031/loading-ui.js": {
       "bytes": 3663,
@@ -83,11 +83,11 @@
     },
     "web/studio031/source-data.js": {
       "bytes": 7410,
-      "sha256": "389a280488de4ffbcd24c4eb9262bfe6005095b1512a21096bb904da5ba5e322"
+      "sha256": "25b8d6082c71edd0c5066a949da468fdf7da2d823f71acf762780a6ac7a3982d"
     },
     "web/studio031/structure-volumes.js": {
       "bytes": 26846,
-      "sha256": "628dde60fe981a3404680d203e60c557fab30d10f861ad9b589c003609c7cbf9"
+      "sha256": "c1e451f0ca5cf7ed6ed72f9c2e13ce5d5fd51ec5bb76b6acb65bb47860755b3e"
     },
     "web/studio031/studio.css": {
       "bytes": 6734,
@@ -95,7 +95,7 @@
     },
     "web/studio031/studio.js": {
       "bytes": 28308,
-      "sha256": "56e8be751832d3d9bb530eefad46619be33ce650d76b92e336492ded49a3db4f"
+      "sha256": "283925ab21960b030465f9f1fadd1f53fc70935c27da65aeaf11f30ce2c29ea6"
     },
     "web/studio031/vendor/THREE-LICENSE.txt": {
       "bytes": 1081,
@@ -131,11 +131,11 @@
     },
     "web/studio031/lite-mode.js": {
       "bytes": 2621,
-      "sha256": "25a64514b0fadc992316791ebede8a74606ec6a53109d9e6b6ab79313ae391ba"
+      "sha256": "9992c0b114f8c46885bc47b414b40c37e2cfc6a35f53cc9bbdfde4493bda4e00"
     },
     "web/studio031/baked-volume.js": {
-      "bytes": 11517,
-      "sha256": "b40e8d401610823c6fecd5508bf91dcc983278ea70c3e5a805558d3fa4c214e5"
+      "bytes": 12563,
+      "sha256": "863ca50df08e09bdd08dda649418a64f999ac6cd88ade178e729544903a3a629"
     }
   }
 }

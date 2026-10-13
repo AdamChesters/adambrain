@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import {createLoadingUI} from './loading-ui.js?v=070.5';
 const loading=createLoadingUI();
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {HybridVolume} from './hybrid-volume.js?v=087.4';
+import {HybridVolume} from './hybrid-volume.js?v=087.5';
 import {createFrameScheduler} from './scheduler.js?v=035.1';
 import {createRenderQuality} from './render-quality.js?v=064.1';
 const $=id=>document.getElementById(id),host=$('viewport');

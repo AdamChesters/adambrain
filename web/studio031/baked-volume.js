@@ -32,7 +32,7 @@ void main(){ivec3 c=ivec3(ivec2(gl_FragCoord.xy),int(bakeZ));
  float len=length(g);gl_FragColor=vec4(len>1e-4?g/len*.5+.5:vec3(.5),texelFetch(bakedMix,c,0).r);}`;
 
 // One occupancy cell per OCC^3 voxels, padded one voxel for trilinear support.
-const OCC = 4, BAKE_GAP = 100;
+const OCC = 4;
 const occupancyFragment = `precision highp float;precision highp sampler3D;
 uniform sampler3D bakedColor;uniform ivec3 dims;uniform float bakeZ;
 void main(){ivec3 c=ivec3(ivec2(gl_FragCoord.xy),int(bakeZ))*${OCC};float m=0.;
@@ -101,9 +101,15 @@ function signature(u) {
   return parts.join('|');
 }
 
+const snapshot = v => v?.isTexture ? v : Array.isArray(v) ? v.map(x => x?.clone && !x.isTexture ? x.clone() : x) : v?.clone ? v.clone() : v;
+
 export class VolumeBaker {
-  constructor(renderer, cellMM) {
-    this.renderer = renderer; this.cellMM = cellMM; this.signature = ''; this.materials = new Map(); this.bakes = 0; this.lastBakeMS = 0; this.lastBakeAt = 0; this.deferred = 0; this.due = null;
+  // sliceBudget: grid slices baked per frame. 0 bakes everything at once (desktop). Otherwise
+  // the bake runs into a back buffer over several frames from a uniform snapshot, and the
+  // finished grid swaps in; drawing never waits for a bake (phones).
+  constructor(renderer, cellMM, sliceBudget = 0) {
+    this.renderer = renderer; this.cellMM = cellMM; this.sliceBudget = sliceBudget; this.signature = ''; this.materials = new Map();
+    this.bakes = 0; this.lastBakeMS = 0; this.job = null; this.bu = {bakeMin: {value: new THREE.Vector3()}, bakeCell: {value: new THREE.Vector3()}, bakeZ: {value: 0}};
     this.scene = new THREE.Scene(); this.camera = new THREE.Camera();
     this.quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2)); this.quad.frustumCulled = false; this.scene.add(this.quad);
     const pass = (fragmentShader, uniforms) => new THREE.ShaderMaterial({vertexShader: quadVertex, fragmentShader, uniforms, depthTest: false, depthWrite: false});
@@ -118,61 +124,67 @@ export class VolumeBaker {
     t.texture.wrapS = t.texture.wrapT = t.texture.wrapR = THREE.ClampToEdgeWrapping;
     return t;
   }
+  grid() { return {color: this.target(this.dims), mix: this.target(this.dims, THREE.RedFormat, false), normal: this.target(this.dims), occ: this.target(this.occDims, THREE.RedFormat, false)}; }
   allocate(bounds) {
     const key = bounds.min.toArray().concat(bounds.max.toArray()).join(',');
     if (key === this.boundsKey) return;
-    this.boundsKey = key; this.signature = '';
-    for (const t of [this.color, this.mix, this.normal, this.occ]) t?.dispose();
+    this.boundsKey = key; this.signature = ''; this.job = null;
+    for (const g of [this.front, this.back]) if (g) for (const t of Object.values(g)) t.dispose();
     const cell = this.cellMM / 1000, size = bounds.getSize(new THREE.Vector3());
     this.dims = size.clone().divideScalar(cell).ceil().toArray();
     this.cell = new THREE.Vector3(size.x / this.dims[0], size.y / this.dims[1], size.z / this.dims[2]);
     this.occDims = this.dims.map(n => Math.ceil(n / OCC));
-    this.color = this.target(this.dims); this.mix = this.target(this.dims, THREE.RedFormat, false);
-    this.normal = this.target(this.dims); this.occ = this.target(this.occDims, THREE.RedFormat, false);
+    this.front = this.grid(); this.back = this.sliceBudget ? this.grid() : this.front;
     this.min = bounds.min.clone(); this.size = size;
-    Object.assign(this.ru.bakedColor, {value: this.color.texture}); this.ru.bakedNormal.value = this.normal.texture; this.ru.bakedOcc.value = this.occ.texture;
+    this.bu.bakeMin.value.copy(this.min); this.bu.bakeCell.value.copy(this.cell);
     this.ru.gridMin.value.copy(bounds.min); this.ru.gridSize.value.copy(size);
     // Occupancy covers whole cells; its extent can pass the grid edge.
-    this.ru.occDims.value.set(...this.occDims); this.ru.gridSize.value.copy(size);
-    this.ru.occCell.value.copy(this.cell).multiplyScalar(OCC);
+    this.ru.occDims.value.set(...this.occDims); this.ru.occCell.value.copy(this.cell).multiplyScalar(OCC);
+    this.show(this.front);
   }
-  material(key, mode, uniforms, build) {
+  show(g) { this.ru.bakedColor.value = g.color.texture; this.ru.bakedNormal.value = g.normal.texture; this.ru.bakedOcc.value = g.occ.texture; }
+  material(key, mode, build) {
     const id = key + '/' + mode;
     let m = this.materials.get(id);
-    if (!m) { m = new THREE.ShaderMaterial({defines: build.defines(mode), vertexShader: quadVertex, fragmentShader: build.fragment(mode), uniforms, depthTest: false, depthWrite: false}); this.materials.set(id, m); }
+    if (!m) { m = new THREE.ShaderMaterial({defines: build.defines(mode), vertexShader: quadVertex, fragmentShader: build.fragment(mode), uniforms: this.bu, depthTest: false, depthWrite: false}); this.materials.set(id, m); }
     return m;
   }
-  slices(target, depth, material) {
-    const r = this.renderer; this.quad.material = material;
-    for (let z = 0; z < depth; z++) { this.pu.bakeZ.value = z; if (material.uniforms.bakeZ) material.uniforms.bakeZ.value = z; r.setRenderTarget(target, z); r.render(this.scene, this.camera); }
+  // Stages in order: colour, light mix (unlit colours black, lit white), normals, occupancy.
+  step(budget) {
+    const j = this.job, r = this.renderer, g = this.back;
+    const stages = [[g.color, this.dims[2], () => this.material(j.key, 'color', j.build)], [g.mix, this.dims[2], () => this.material(j.key, 'mix', j.build)], [g.normal, this.dims[2], () => this.normalPass], [g.occ, this.occDims[2], () => this.occPass]];
+    while (budget > 0 && j.stage < stages.length) {
+      const [target, depth, mat] = stages[j.stage], material = mat();
+      if (j.stage === 1) for (const [name, black] of j.colours) this.bu[name].value = black;
+      else if (j.stage === 2) { this.pu.bakedColor.value = g.color.texture; this.pu.bakedMix.value = g.mix.texture; this.pu.dims.value.set(...this.dims); }
+      this.quad.material = material;
+      // Normal and occupancy slices are far cheaper than the two classification passes.
+      const cost = [1, 1, .2, .3][j.stage];
+      for (; j.z < depth && budget > 0; j.z++, budget -= cost) { this.pu.bakeZ.value = this.bu.bakeZ.value = j.z; r.setRenderTarget(target, j.z); r.render(this.scene, this.camera); }
+      if (j.stage === 1) for (const [name] of j.colours) this.bu[name].value = j.kept[name];
+      if (j.z >= depth) { j.stage++; j.z = 0; }
+    }
+    return j.stage >= stages.length;
   }
-  // Rebakes when any classification input changed. Returns true when it baked.
+  // Starts or continues a bake when any classification input changed. Returns true while a bake is in progress.
   update(u, key, build, colours) {
     const sig = signature(u) + '#' + key;
-    if (sig === this.signature) return false;
-    // While controls or the fade animation keep changing, rebake at most every BAKE_GAP ms.
-    // A deferred change asks for one more frame so the final state is always baked.
-    const wait = this.lastBakeAt + BAKE_GAP - performance.now();
-    if (this.signature && wait > 0) {
-      if (!this.due) this.due = setTimeout(() => { this.due = null; dispatchEvent(new Event('volume-bake-due')); }, wait);
-      this.deferred++; return false;
+    if (!this.job) {
+      if (sig === this.signature) return false;
+      for (const [k, {value}] of Object.entries(u)) { if (k in this.bu && k.startsWith('bake')) continue; if (this.bu[k]) this.bu[k].value = snapshot(value); else this.bu[k] = {value: snapshot(value)}; }
+      const kept = Object.fromEntries(colours.map(([name]) => [name, this.bu[name].value]));
+      this.job = {sig, key, build, colours, kept, stage: 0, z: 0, started: performance.now()};
     }
-    const t0 = performance.now(), r = this.renderer, saved = r.getRenderTarget(), auto = r.autoClear;
-    u.bakeMin = u.bakeMin || {value: new THREE.Vector3()}; u.bakeCell = u.bakeCell || {value: new THREE.Vector3()}; u.bakeZ = u.bakeZ || {value: 0};
-    u.bakeMin.value.copy(this.min); u.bakeCell.value.copy(this.cell);
+    const r = this.renderer, saved = r.getRenderTarget(), auto = r.autoClear;
     r.autoClear = false;
-    this.slices(this.color, this.dims[2], this.material(key, 'color', u, build));
-    // Light-mix pass: unlit colours black, lit colour white, so emitted/extinction is the mix.
-    const kept = colours.map(([name]) => [name, u[name].value]);
-    for (const [name, black] of colours) u[name].value = black;
-    try { this.slices(this.mix, this.dims[2], this.material(key, 'mix', u, build)); }
-    finally { for (const [name, value] of kept) u[name].value = value; }
-    this.pu.bakedColor.value = this.color.texture; this.pu.bakedMix.value = this.mix.texture; this.pu.dims.value.set(...this.dims);
-    this.slices(this.normal, this.dims[2], this.normalPass);
-    this.slices(this.occ, this.occDims[2], this.occPass);
-    r.setRenderTarget(saved); r.autoClear = auto;
-    this.signature = sig; this.bakes++; this.lastBakeAt = performance.now(); this.lastBakeMS = Math.round(this.lastBakeAt - t0);
-    return true;
+    let done;
+    try { done = this.step(this.sliceBudget && this.signature ? this.sliceBudget : Infinity); }
+    finally { r.setRenderTarget(saved); r.autoClear = auto; }
+    if (!done) return true;
+    if (this.back !== this.front) [this.front, this.back] = [this.back, this.front];
+    this.show(this.front);
+    this.signature = this.job.sig; this.bakes++; this.lastBakeMS = Math.round(performance.now() - this.job.started); this.job = null;
+    return false;
   }
-  inspect() { return {cellMM: this.cellMM, dims: this.dims, occDims: this.occDims, bakes: this.bakes, deferred: this.deferred, lastBakeSubmitMS: this.lastBakeMS, materials: this.materials.size}; }
+  inspect() { return {cellMM: this.cellMM, dims: this.dims, occDims: this.occDims, sliceBudget: this.sliceBudget, bakes: this.bakes, baking: !!this.job, lastBakeMS: this.lastBakeMS, materials: this.materials.size}; }
 }
