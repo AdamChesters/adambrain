@@ -62,12 +62,12 @@
       "sha256": "2c7fe2bfb9b12348a7ee43d66556f5a1a9574683568a48ec2b6ea367e67ea8e1"
     },
     "web/studio031/hybrid-volume.js": {
-      "bytes": 28617,
-      "sha256": "e410e4735b0fe4b8eaad31dd37677118bc852274c4f9263ee8fe3db35026527e"
+      "bytes": 29203,
+      "sha256": "ccb6134633a4ee06d1241a2efa35a12db275843a9c47c5cc809f648eaa870214"
     },
     "web/studio031/index.html": {
       "bytes": 10274,
-      "sha256": "6ec5f4132feb99e0c397bd5e23fe8515dfe887132af0f8cf9079923b1b48ab75"
+      "sha256": "f60df2ce67ee64549a383e270c03b72445a72e115c02a556cb2f0901de750665"
     },
     "web/studio031/loading-ui.js": {
       "bytes": 1865,
@@ -95,7 +95,7 @@
     },
     "web/studio031/studio.js": {
       "bytes": 27665,
-      "sha256": "2132f5f50879a7cbc71effcf2b2ce4a4d8bbc19c197feba855e030fcaaa1d0d8"
+      "sha256": "d3879c9ecbcd6f59c158f7063f07af7a74a2bc65a000741223ac694ce0f202fb"
     },
     "web/studio031/vendor/THREE-LICENSE.txt": {
       "bytes": 1081,
