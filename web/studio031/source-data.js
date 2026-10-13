@@ -21,7 +21,7 @@ async function readSource(response,record,expectedBytes){
  try{for(;;){const {done,value}=await reader.read();if(done)break;if(offset+value.byteLength>data.byteLength){const larger=new Uint8Array(Math.max(offset+value.byteLength,data.byteLength*2));larger.set(data);data=larger;}data.set(value,offset);offset+=value.byteLength;record.received=offset;const now=performance.now();if(now-lastUpdate>100){progress();lastUpdate=now;}}progress();return offset===data.byteLength?data.buffer:data.buffer.slice(0,offset);}finally{reader.releaseLock();}
 }
 function worker(){
- const w=new Worker(new URL('./asset-worker.js?v=087.5',import.meta.url),{type:'module'});w.busy=false;
+ const w=new Worker(new URL('./asset-worker.js?v=108.1',import.meta.url),{type:'module'});w.busy=false;
  w.onmessage=({data})=>{const j=jobs.get(data.id);jobs.delete(data.id);w.busy=false;if(j){data.error?j.reject(Error(data.error)):j.resolve(data.buffer);}pump();};
  w.onerror=e=>{note('worker','worker error: '+(e.message||'unknown'));for(const [id,j]of jobs)if(j.worker===w){j.reject(Error('Source decode worker failed'));jobs.delete(id);}w.busy=false;pump();};workers.push(w);return w;
 }

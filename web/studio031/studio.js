@@ -1,8 +1,8 @@
 import * as THREE from 'three';
-import {createLoadingUI} from './loading-ui.js?v=070.5';
+import {createLoadingUI} from './loading-ui.js?v=108.1';
 const loading=createLoadingUI();
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {HybridVolume} from './hybrid-volume.js?v=087.5';
+import {HybridVolume} from './hybrid-volume.js?v=108.1';
 import {createFrameScheduler} from './scheduler.js?v=035.1';
 import {createRenderQuality} from './render-quality.js?v=064.1';
 const $=id=>document.getElementById(id),host=$('viewport');
@@ -91,7 +91,7 @@ function restoreData(data){stopIntro();defaultFraming=false;if(!data||data.study
 function refreshFading(){const running=intro.active&&!intro.paused;$('fadeToggle').textContent=running?'Stop fading animation':'Start fading animation';$('fadeToggle').setAttribute('aria-pressed',String(running));}
 function refreshMotion(){$('motionToggle').textContent=controls.autoRotate?'Stop motion':'Start motion';$('motionToggle').setAttribute('aria-pressed',String(controls.autoRotate));$('motionToggle').setAttribute('aria-label',controls.autoRotate?'Stop motion':'Start motion');}
 function updateAppearance(){controls.autoRotateSpeed=.22*+$('orbitSpeed').value;$('orbitSpeedValue').value=+$('orbitSpeed').value+'×';quality.setMode($('renderQuality').value);}
-function publish(){window.studioSummary={revision:'086.1',status:window.studioReady?'ready':'loading',camera:camera.position.toArray(),target:controls.target.toArray(),brainDepth:[...state.brainDepth],intro:{active:intro.active,waiting:intro.waiting,phase:intro.phase,seconds:intro.seconds,paused:intro.paused},motion:controls.autoRotate,layers:structuredClone(state.layers),source:hybrid.ready?hybrid.inspect():null,quality:quality.inspect(),sampling:{...sampling,active_step_mm:hybrid.u?.stepMM.value},screen:{width:gpu.drawingBufferWidth,height:gpu.drawingBufferHeight,pixels:gpu.drawingBufferWidth*gpu.drawingBufferHeight},scheduler:{...scheduler.stats,pending:scheduler.pending},clock:elapsed};return window.studioSummary;}
+function publish(){window.studioSummary={revision:'108.1',status:window.studioReady?'ready':'loading',camera:camera.position.toArray(),target:controls.target.toArray(),brainDepth:[...state.brainDepth],intro:{active:intro.active,waiting:intro.waiting,phase:intro.phase,seconds:intro.seconds,paused:intro.paused},motion:controls.autoRotate,layers:structuredClone(state.layers),source:hybrid.ready?hybrid.inspect():null,quality:quality.inspect(),sampling:{...sampling,active_step_mm:hybrid.u?.stepMM.value},screen:{width:gpu.drawingBufferWidth,height:gpu.drawingBufferHeight,pixels:gpu.drawingBufferWidth*gpu.drawingBufferHeight},scheduler:{...scheduler.stats,pending:scheduler.pending},clock:elapsed};return window.studioSummary;}
 window.inspectStudio=publish;window.reconstructionTest={renderer,camera,controls,state,hybrid,layer,apply,renderFrame,fit,quality,scheduler,get current(){return current;},restoreData,stop(){controls.autoRotate=false;stopIntro();refreshMotion();apply();},advanceIntro,startIntro,get intro(){return intro;}};
 for(const b of document.querySelectorAll('[data-tab]'))b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(t=>t.classList.toggle('active',t===b));document.querySelectorAll('[data-pane]').forEach(p=>p.hidden=p.dataset.pane!==b.dataset.tab);};
 // Phones and tablets open with the controls closed so the model is visible.
