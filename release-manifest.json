@@ -62,16 +62,16 @@
       "sha256": "2c7fe2bfb9b12348a7ee43d66556f5a1a9574683568a48ec2b6ea367e67ea8e1"
     },
     "web/studio031/hybrid-volume.js": {
-      "bytes": 29027,
-      "sha256": "1f9d0a22c479c615fbf7d6013aa02f813764ddbe1d1b282a1944b6af3ce1c7c6"
+      "bytes": 29263,
+      "sha256": "c2c2e0f147fd73bff0c13246f7008fe27d2f76eefee148e1a64fce0dc7fa5685"
     },
     "web/studio031/index.html": {
       "bytes": 10274,
-      "sha256": "dcdb974415064eeef317efc55e4e156c612436c1e398014c35dd318f52a52488"
+      "sha256": "b10774b4bdb7106590654742f4f897cc18aebe9d96cb0e04567cf4277e572b7a"
     },
     "web/studio031/loading-ui.js": {
-      "bytes": 1865,
-      "sha256": "0e0e029af4947f1b895cf6e7bb6952fd5f45beac4ca1e56656fbc92389cd0cc2"
+      "bytes": 3370,
+      "sha256": "d8cbfe9a2dc24098e1c1172778b83cd28eaa04971336c991232306480de75107"
     },
     "web/studio031/render-quality.js": {
       "bytes": 2757,
@@ -82,20 +82,20 @@
       "sha256": "5a3282f49162fc5af85f95264a8b1da3e2322fc3aad20061dd9964cb3a4ac124"
     },
     "web/studio031/source-data.js": {
-      "bytes": 6900,
-      "sha256": "cddc42fa1e287f8612a37938593ee39531710d6e426c48a677a19d3e02a364e4"
+      "bytes": 7279,
+      "sha256": "320012b05a8f148b4a824d109cd649535bd65442f01306c13983c2f96a18c42c"
     },
     "web/studio031/structure-volumes.js": {
-      "bytes": 26810,
-      "sha256": "0f49fa26c3be1341fdceaa677ed091bf450f9089a23c1eb69b00217a89927dd8"
+      "bytes": 26846,
+      "sha256": "8300b75f419d85bf7561577c44893f01b324fb13f38a52387a750c02d117b153"
     },
     "web/studio031/studio.css": {
       "bytes": 6734,
       "sha256": "a4e0a9b6000406778c43dc8877739c48c2ff219f7ba5f7b341b6bfbd98d3f79f"
     },
     "web/studio031/studio.js": {
-      "bytes": 27665,
-      "sha256": "07b4b7aa66e3b655bba578c6e43a25f603122acbffa809b07d12ea2d38f6a667"
+      "bytes": 27743,
+      "sha256": "aa03bc8587fe0cff4fca0cc0615b98adcc54b8b33256bfb58ea88d644690d1d0"
     },
     "web/studio031/vendor/THREE-LICENSE.txt": {
       "bytes": 1081,
@@ -126,12 +126,12 @@
       "sha256": "7a963999c87c872e9f329c5e5c8874baf75dc51af552dd0633e058ce78de60cf"
     },
     "web/studio031/volume-memory.js": {
-      "bytes": 1761,
-      "sha256": "f681752c6130b958ffc81973b68a38b320095bc14599e7d84ff7307b1ee20db3"
+      "bytes": 2018,
+      "sha256": "731043e71d9964f587dc9038774371904cae16228bcc95c172298d5362c92010"
     },
     "web/studio031/lite-mode.js": {
       "bytes": 2400,
-      "sha256": "df716fe771077e2a042dd55634971579910cacd55f4f69125e3f3d0d62df55f7"
+      "sha256": "a14d0bcfb7c02d570d1fe79a3820824d2aef9c6aa32cbf3e188ab95f577b21f4"
     }
   }
 }

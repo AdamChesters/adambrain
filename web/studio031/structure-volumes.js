@@ -1,6 +1,6 @@
-import {sourceBuffer} from './source-data.js?v=086.5';
+import {sourceBuffer} from './source-data.js?v=086.6';
 import * as THREE from 'three';
-import {halfData,weightBricks,releaseAfterUpload,textureBytes} from './volume-memory.js?v=086.5';
+import {halfData,useHalf,weightBricks,releaseAfterUpload,textureBytes} from './volume-memory.js?v=086.6';
 
 // Extra MRI sources keep native grids. Only annotation weights are interpolated.
 const matrix = rows => new THREE.Matrix4().set(...rows.flat());
@@ -18,7 +18,7 @@ function texture(buffer, dims, weights = false, release = false) {
   if (buffer.byteLength !== dims.reduce((a,b) => a*b, 1)*4) throw Error('Structure texture size mismatch');
   const t = new THREE.Data3DTexture(weights ? new Uint8Array(buffer) : halfData(new Float32Array(buffer)), ...dims);
   t.format = weights ? THREE.RGBAFormat : THREE.RedFormat;
-  t.type = weights ? THREE.UnsignedByteType : THREE.HalfFloatType;
+  t.type = weights ? THREE.UnsignedByteType : useHalf ? THREE.HalfFloatType : THREE.FloatType;
   t.minFilter = t.magFilter = THREE.LinearFilter;
   t.unpackAlignment = 1; t.needsUpdate = true;
   // Per-source textures are never sliced later, so their CPU copies can go; atlases stay intact.
