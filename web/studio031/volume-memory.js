@@ -1,8 +1,9 @@
 // Display-volume memory: half-float scalars, CPU copies freed after GPU upload,
 // and 2^3-voxel support bricks kept for empty-space skipping.
-// Test switches: ?half=0 keeps float32 scalars, ?keep=1 keeps CPU copies.
+// Test switches: ?half=1 stores scalars as half-float (stalled the first frame on an Adreno 650),
+// ?keep=1 keeps CPU copies.
 const params=new URLSearchParams(location.search);
-export const useHalf=params.get('half')!=='0',keepCopies=params.get('keep')==='1';
+export const useHalf=params.get('half')==='1',keepCopies=params.get('keep')==='1';
 const base=new Uint16Array(512),shift=new Uint8Array(512);
 for(let i=0;i<256;i++){const e=i-127;let b,s;
  if(e<-27){b=0;s=24;}else if(e<-14){b=0x0400>>(-e-14);s=-e-1;}else if(e<=15){b=(e+15)<<10;s=13;}else if(e<128){b=0x7c00;s=24;}else{b=0x7c00;s=13;}

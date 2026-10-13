@@ -1,6 +1,6 @@
-import {sourceBuffer} from './source-data.js?v=086.7';
+import {sourceBuffer} from './source-data.js?v=086.8';
 import * as THREE from 'three';
-import {halfData,useHalf,weightBricks,releaseAfterUpload,textureBytes} from './volume-memory.js?v=086.7';
+import {halfData,useHalf,weightBricks,releaseAfterUpload,textureBytes} from './volume-memory.js?v=086.8';
 
 // Extra MRI sources keep native grids. Only annotation weights are interpolated.
 const matrix = rows => new THREE.Matrix4().set(...rows.flat());
