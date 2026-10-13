@@ -67,7 +67,7 @@
     },
     "web/studio031/index.html": {
       "bytes": 10274,
-      "sha256": "5113a190a6cb4feb5eb520cd01c178c6b89b0d3f66d8416274cb59169999f99d"
+      "sha256": "ea8abdf85f8f8e637e8b840ac57e11f882b1bec3a599716ca5b17aeb7883c289"
     },
     "web/studio031/loading-ui.js": {
       "bytes": 3663,
@@ -94,8 +94,8 @@
       "sha256": "a4e0a9b6000406778c43dc8877739c48c2ff219f7ba5f7b341b6bfbd98d3f79f"
     },
     "web/studio031/studio.js": {
-      "bytes": 28153,
-      "sha256": "0306bde81a678b4a7c62ab03ae7bacf18f31989531f53260ee31962c960b7d6a"
+      "bytes": 28255,
+      "sha256": "b2bdddbf6ee7f1d28a146de02a8e3b035d24e0ce9305a6e49a48f80fdbfb7049"
     },
     "web/studio031/vendor/THREE-LICENSE.txt": {
       "bytes": 1081,
