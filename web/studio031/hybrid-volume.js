@@ -1,9 +1,9 @@
-import {sourceBuffer,planSourceLoad} from './source-data.js?v=087.1';
-import {lite,liteVolumeGroups,liteStructures,liteCoverage} from './lite-mode.js?v=087.1';
-import {StructureVolumes} from './structure-volumes.js?v=087.1';
-import {halfData,useHalf,scalarBricks,weightBricks,brickDims,threshold,releaseAfterUpload} from './volume-memory.js?v=087.1';
+import {sourceBuffer,planSourceLoad} from './source-data.js?v=087.4';
+import {lite,liteVolumeGroups,liteStructures,liteCoverage} from './lite-mode.js?v=087.4';
+import {StructureVolumes} from './structure-volumes.js?v=087.4';
+import {halfData,useHalf,scalarBricks,weightBricks,brickDims,threshold,releaseAfterUpload} from './volume-memory.js?v=087.4';
 import * as THREE from 'three';
-import {VolumeBaker,bakeFragment,renderFragment} from './baked-volume.js?v=087.1';
+import {VolumeBaker,bakeFragment,renderFragment} from './baked-volume.js?v=087.4';
 const vertex=`varying vec3 p;varying vec3 eye;void main(){p=position;eye=(inverse(modelMatrix)*vec4(cameraPosition,1.)).xyz;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
 const baseFragment=`precision highp float;precision highp sampler3D;
 uniform sampler3D aData,aWeights,hData,hWeights,aRegions;uniform vec4 aLight;uniform vec3 hLight;uniform float faceLight,stepMM;uniform bool nativeSignal;uniform float surfaceContextOpacity,faceContextOpacity;uniform bool facialGrouping;uniform vec3 faceContextColor;

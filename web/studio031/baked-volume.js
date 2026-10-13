@@ -32,7 +32,7 @@ void main(){ivec3 c=ivec3(ivec2(gl_FragCoord.xy),int(bakeZ));
  float len=length(g);gl_FragColor=vec4(len>1e-4?g/len*.5+.5:vec3(.5),texelFetch(bakedMix,c,0).r);}`;
 
 // One occupancy cell per OCC^3 voxels, padded one voxel for trilinear support.
-const OCC = 4;
+const OCC = 4, BAKE_GAP = 100;
 const occupancyFragment = `precision highp float;precision highp sampler3D;
 uniform sampler3D bakedColor;uniform ivec3 dims;uniform float bakeZ;
 void main(){ivec3 c=ivec3(ivec2(gl_FragCoord.xy),int(bakeZ))*${OCC};float m=0.;
@@ -103,7 +103,7 @@ function signature(u) {
 
 export class VolumeBaker {
   constructor(renderer, cellMM) {
-    this.renderer = renderer; this.cellMM = cellMM; this.signature = ''; this.materials = new Map(); this.bakes = 0; this.lastBakeMS = 0;
+    this.renderer = renderer; this.cellMM = cellMM; this.signature = ''; this.materials = new Map(); this.bakes = 0; this.lastBakeMS = 0; this.lastBakeAt = 0; this.deferred = 0; this.due = null;
     this.scene = new THREE.Scene(); this.camera = new THREE.Camera();
     this.quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2)); this.quad.frustumCulled = false; this.scene.add(this.quad);
     const pass = (fragmentShader, uniforms) => new THREE.ShaderMaterial({vertexShader: quadVertex, fragmentShader, uniforms, depthTest: false, depthWrite: false});
@@ -150,6 +150,13 @@ export class VolumeBaker {
   update(u, key, build, colours) {
     const sig = signature(u) + '#' + key;
     if (sig === this.signature) return false;
+    // While controls or the fade animation keep changing, rebake at most every BAKE_GAP ms.
+    // A deferred change asks for one more frame so the final state is always baked.
+    const wait = this.lastBakeAt + BAKE_GAP - performance.now();
+    if (this.signature && wait > 0) {
+      if (!this.due) this.due = setTimeout(() => { this.due = null; dispatchEvent(new Event('volume-bake-due')); }, wait);
+      this.deferred++; return false;
+    }
     const t0 = performance.now(), r = this.renderer, saved = r.getRenderTarget(), auto = r.autoClear;
     u.bakeMin = u.bakeMin || {value: new THREE.Vector3()}; u.bakeCell = u.bakeCell || {value: new THREE.Vector3()}; u.bakeZ = u.bakeZ || {value: 0};
     u.bakeMin.value.copy(this.min); u.bakeCell.value.copy(this.cell);
@@ -164,8 +171,8 @@ export class VolumeBaker {
     this.slices(this.normal, this.dims[2], this.normalPass);
     this.slices(this.occ, this.occDims[2], this.occPass);
     r.setRenderTarget(saved); r.autoClear = auto;
-    this.signature = sig; this.bakes++; this.lastBakeMS = Math.round(performance.now() - t0);
+    this.signature = sig; this.bakes++; this.lastBakeAt = performance.now(); this.lastBakeMS = Math.round(this.lastBakeAt - t0);
     return true;
   }
-  inspect() { return {cellMM: this.cellMM, dims: this.dims, occDims: this.occDims, bakes: this.bakes, lastBakeSubmitMS: this.lastBakeMS, materials: this.materials.size}; }
+  inspect() { return {cellMM: this.cellMM, dims: this.dims, occDims: this.occDims, bakes: this.bakes, deferred: this.deferred, lastBakeSubmitMS: this.lastBakeMS, materials: this.materials.size}; }
 }

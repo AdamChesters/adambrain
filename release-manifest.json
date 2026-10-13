@@ -63,11 +63,11 @@
     },
     "web/studio031/hybrid-volume.js": {
       "bytes": 31269,
-      "sha256": "a3b35d535a525ba23ccabae5a493b66233ce477b41854b98124b1f5d22f4b404"
+      "sha256": "c9839b520f179a83316cb3b1acb33c68078417a42efffe9a415f8262aca645b0"
     },
     "web/studio031/index.html": {
       "bytes": 10274,
-      "sha256": "ea8abdf85f8f8e637e8b840ac57e11f882b1bec3a599716ca5b17aeb7883c289"
+      "sha256": "2bc3533113ca721595bdc33273d837b9d72244d757050f7f6bda3df6a6c1d218"
     },
     "web/studio031/loading-ui.js": {
       "bytes": 3663,
@@ -83,19 +83,19 @@
     },
     "web/studio031/source-data.js": {
       "bytes": 7410,
-      "sha256": "b43680e2ad3bc212282b00314ea029f68a4907e4fb0a4a8c9c3028b31e027933"
+      "sha256": "389a280488de4ffbcd24c4eb9262bfe6005095b1512a21096bb904da5ba5e322"
     },
     "web/studio031/structure-volumes.js": {
       "bytes": 26846,
-      "sha256": "17ae2a197bee28dbd78ee1d4df8b39db0e9043b0acd916177d17e48811956a07"
+      "sha256": "628dde60fe981a3404680d203e60c557fab30d10f861ad9b589c003609c7cbf9"
     },
     "web/studio031/studio.css": {
       "bytes": 6734,
       "sha256": "a4e0a9b6000406778c43dc8877739c48c2ff219f7ba5f7b341b6bfbd98d3f79f"
     },
     "web/studio031/studio.js": {
-      "bytes": 28255,
-      "sha256": "b2bdddbf6ee7f1d28a146de02a8e3b035d24e0ce9305a6e49a48f80fdbfb7049"
+      "bytes": 28308,
+      "sha256": "56e8be751832d3d9bb530eefad46619be33ce650d76b92e336492ded49a3db4f"
     },
     "web/studio031/vendor/THREE-LICENSE.txt": {
       "bytes": 1081,
@@ -131,11 +131,11 @@
     },
     "web/studio031/lite-mode.js": {
       "bytes": 2621,
-      "sha256": "cbf72f28c98bf0eacaa8bb4c7b210141e8f11e11ea3db2d09e912a0239122ada"
+      "sha256": "25a64514b0fadc992316791ebede8a74606ec6a53109d9e6b6ab79313ae391ba"
     },
     "web/studio031/baked-volume.js": {
-      "bytes": 10937,
-      "sha256": "9ee497536d6dc264932a893f8f7f1986e6067cd2dbb3fb566a3b9b3e42f30d96"
+      "bytes": 11517,
+      "sha256": "b40e8d401610823c6fecd5508bf91dcc983278ea70c3e5a805558d3fa4c214e5"
     }
   }
 }

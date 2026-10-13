@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import {createLoadingUI} from './loading-ui.js?v=070.5';
 const loading=createLoadingUI();
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {HybridVolume} from './hybrid-volume.js?v=087.1';
+import {HybridVolume} from './hybrid-volume.js?v=087.4';
 import {createFrameScheduler} from './scheduler.js?v=035.1';
 import {createRenderQuality} from './render-quality.js?v=064.1';
 const $=id=>document.getElementById(id),host=$('viewport');
@@ -97,7 +97,7 @@ for(const b of document.querySelectorAll('[data-tab]'))b.onclick=()=>{document.q
 // Phones and tablets open with the controls closed so the model is visible.
 const compactScreen=()=>matchMedia('(max-width: 820px), (pointer: coarse)').matches;
 function setPanel(open){$('panel').hidden=!open;document.body.classList.toggle('panel-closed',!open);$('panelToggle').setAttribute('aria-expanded',String(open));resize();}
-$('panelToggle').onclick=()=>setPanel($('panel').hidden);if(compactScreen())setPanel(false);$('motionToggle').onclick=()=>{controls.autoRotate=!controls.autoRotate;intro.motionCancelled=!controls.autoRotate;refreshMotion();interaction();};
+$('panelToggle').onclick=()=>setPanel($('panel').hidden);addEventListener('volume-bake-due',()=>invalidate());if(compactScreen())setPanel(false);$('motionToggle').onclick=()=>{controls.autoRotate=!controls.autoRotate;intro.motionCancelled=!controls.autoRotate;refreshMotion();interaction();};
 $('fadeToggle').onclick=()=>{if(intro.active){intro.paused=!intro.paused;intro.last=performance.now();refreshFading();apply();}else if(current)startIntro();};
 // Touching any control pauses the fading animation, as the stop button does, so it cannot fight the user's change.
 const pauseFading=e=>{if(intro.active&&!intro.paused&&intro.phase!=='loading'&&e.target.closest?.('input,select,textarea')){intro.paused=true;intro.last=performance.now();refreshFading();}};for(const type of ['pointerdown','keydown','input'])$('panel').addEventListener(type,pauseFading,true);
