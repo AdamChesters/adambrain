@@ -20,7 +20,9 @@ export function createLoadingUI() {
       'gpu=' + gpu + ' lost=' + (gl?.isContextLost?.() ?? '?'),
       'layers pending=' + (s ? [...s.pending.keys()].join(',') || '-' : '?') + ' waiting=' + (s ? s.slots.filter(x => x.wanted && x.data.loaded === false).map(x => x.id).join(',') || '-' : '?') + ' failed=' + (s ? [...s.failures.entries()].map(e => e.join(':')).join(',') || '-' : '?'),
       'first frame=' + (window.__firstFrame || 'not submitted') + ' skip=' + JSON.stringify(h?.occStats ? {ms: h.occStats.buildMS, exact: h.occStats.exactSlots.length} : (h?.occError || 'pending')),
-      ...(window.sourceTrace || []).slice(-14).map(e => e.t + ' ' + e.f + ' ' + e.stage)
+      'slots ' + (s ? s.slots.map(x => x.id + ':' + (x.data.loaded === false ? (x.wanted ? 'wanted' : 'idle') : 'loaded')).join(' ') : '?'),
+      'decode jobs=' + (window.sourceMetrics ? JSON.stringify({active: window.sourceMetrics.active, req: window.sourceMetrics.requests}) : '?'),
+      ...[...(window.sourceFiles || new Map())].map(([f, v]) => f + ' ' + v.stage + ' @' + v.t)
     ];
     trace.textContent = lines.join('\n');
     setTimeout(draw, 500);

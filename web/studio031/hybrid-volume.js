@@ -1,7 +1,7 @@
-import {sourceBuffer,planSourceLoad} from './source-data.js?v=086.6';
-import {lite,liteVolumeGroups,liteStructures,liteCoverage} from './lite-mode.js?v=086.6';
-import {StructureVolumes} from './structure-volumes.js?v=086.6';
-import {halfData,useHalf,scalarBricks,weightBricks,brickDims,threshold,releaseAfterUpload} from './volume-memory.js?v=086.6';
+import {sourceBuffer,planSourceLoad} from './source-data.js?v=086.7';
+import {lite,liteVolumeGroups,liteStructures,liteCoverage} from './lite-mode.js?v=086.7';
+import {StructureVolumes} from './structure-volumes.js?v=086.7';
+import {halfData,useHalf,scalarBricks,weightBricks,brickDims,threshold,releaseAfterUpload} from './volume-memory.js?v=086.7';
 import * as THREE from 'three';
 const vertex=`varying vec3 p;varying vec3 eye;void main(){p=position;eye=(inverse(modelMatrix)*vec4(cameraPosition,1.)).xyz;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
 const baseFragment=`precision highp float;precision highp sampler3D;

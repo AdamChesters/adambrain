@@ -1,7 +1,7 @@
 // Bounded, shared transport. Each consumer owns its cancellation separately.
 const metrics={requests:0,encodedBytes:0,expectedEncodedBytes:0,decodedBytes:0,deduplicated:0,active:0,maxActive:0,abortedRequests:0,indexRefreshes:0};
 window.sourceMetrics=metrics;
-const trace=window.sourceTrace=[];const note=(path,stage)=>{trace.push({t:Math.round(performance.now()),f:path.split('/').pop().slice(0,8),stage});if(trace.length>200)trace.shift();};
+const trace=window.sourceTrace=[],files=window.sourceFiles=new Map();const note=(path,stage)=>{const f=path.split('/').pop().slice(0,8),t=Math.round(performance.now());trace.push({t,f,stage});if(trace.length>200)trace.shift();files.set(f,{stage,t});};
 const inFlight=new Map(),queue=[],jobs=new Map(),workers=[],decodeQueue=[];
 let nextId=0,closed=false;
 let indexPromise=fetch('./data/transport.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Source index unavailable');return r.json();});
@@ -21,7 +21,7 @@ async function readSource(response,record,expectedBytes){
  try{for(;;){const {done,value}=await reader.read();if(done)break;if(offset+value.byteLength>data.byteLength){const larger=new Uint8Array(Math.max(offset+value.byteLength,data.byteLength*2));larger.set(data);data=larger;}data.set(value,offset);offset+=value.byteLength;record.received=offset;const now=performance.now();if(now-lastUpdate>100){progress();lastUpdate=now;}}progress();return offset===data.byteLength?data.buffer:data.buffer.slice(0,offset);}finally{reader.releaseLock();}
 }
 function worker(){
- const w=new Worker(new URL('./asset-worker.js?v=086.6',import.meta.url),{type:'module'});w.busy=false;
+ const w=new Worker(new URL('./asset-worker.js?v=086.7',import.meta.url),{type:'module'});w.busy=false;
  w.onmessage=({data})=>{const j=jobs.get(data.id);jobs.delete(data.id);w.busy=false;if(j){data.error?j.reject(Error(data.error)):j.resolve(data.buffer);}pump();};
  w.onerror=e=>{note('worker','worker error: '+(e.message||'unknown'));for(const [id,j]of jobs)if(j.worker===w){j.reject(Error('Source decode worker failed'));jobs.delete(id);}w.busy=false;pump();};workers.push(w);return w;
 }
@@ -59,11 +59,11 @@ export async function sourceBuffer(url,signal){
  if(closed)throw Error('Source transport closed');if(signal?.aborted)throw abortError();
  const target=new URL(url,document.baseURI);if(target.origin!==location.origin)throw Error('Source assets must stay local.');
  if(inFlight.has(target.href)){metrics.deduplicated++;return subscribe(inFlight.get(target.href),signal);}
- const record={key:target.href,controller:new AbortController(),owners:new Set(),settled:false};
+ const record={key:target.href,controller:new AbortController(),owners:new Set(),settled:false};note(target.pathname,'queued');
  record.promise=(async()=>{
   let acquired=false;const signal=record.controller.signal;
   try{
-   await acquire(signal);acquired=true;signal.throwIfAborted();
+   await acquire(signal);acquired=true;note(target.pathname,'started');signal.throwIfAborted();
    let index=await indexPromise,entry=index.entries[target.pathname];if(!entry&&/\/data\/assets\/[a-f0-9]{64}\.bin$/.test(target.pathname)){index=await refreshIndex();entry=index.entries[target.pathname];if(!entry)throw Error('Source asset is absent from the current index');}const destination=entry?new URL(entry.url,document.baseURI):target;
    for(let attempt=0;attempt<3;attempt++){
     record.received=0;signal.throwIfAborted();
