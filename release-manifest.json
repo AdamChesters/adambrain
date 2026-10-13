@@ -54,20 +54,20 @@
       "sha256": "e9e354ed15e381b1b2e51802753e32478b9614087b2a6ae25d64acb1c5af057f"
     },
     "web/studio031/asset-worker.js": {
-      "bytes": 595,
-      "sha256": "9e50e214f15617ff095bdb4d206316196c9db21a81490ade2afac99f713ad863"
+      "bytes": 1549,
+      "sha256": "92da0bab1a3d2111346ba6ad607f18b4abbf786b70a081d82733901b2e74fae3"
     },
     "web/studio031/data-origin.css": {
       "bytes": 1848,
       "sha256": "2c7fe2bfb9b12348a7ee43d66556f5a1a9574683568a48ec2b6ea367e67ea8e1"
     },
     "web/studio031/hybrid-volume.js": {
-      "bytes": 28884,
-      "sha256": "4668c69cffde39720bc81d11227b1f26498d0f08076ba280cd9164080fe38abe"
+      "bytes": 29027,
+      "sha256": "1f9d0a22c479c615fbf7d6013aa02f813764ddbe1d1b282a1944b6af3ce1c7c6"
     },
     "web/studio031/index.html": {
       "bytes": 10274,
-      "sha256": "f65cc59cf3f2bc76c34124fc5de9a15ba59ef8686ddd92816e2fee391ae9318f"
+      "sha256": "dcdb974415064eeef317efc55e4e156c612436c1e398014c35dd318f52a52488"
     },
     "web/studio031/loading-ui.js": {
       "bytes": 1865,
@@ -82,12 +82,12 @@
       "sha256": "5a3282f49162fc5af85f95264a8b1da3e2322fc3aad20061dd9964cb3a4ac124"
     },
     "web/studio031/source-data.js": {
-      "bytes": 6699,
-      "sha256": "2ec9058dfac16ebff350f2fccbc849cc2d08f5cc4b51161d0adad635e56c99f3"
+      "bytes": 6900,
+      "sha256": "cddc42fa1e287f8612a37938593ee39531710d6e426c48a677a19d3e02a364e4"
     },
     "web/studio031/structure-volumes.js": {
       "bytes": 26810,
-      "sha256": "11cab833ecefe4f38295f860abd81cc955a6c85e2944be214d588db5513c0017"
+      "sha256": "0f49fa26c3be1341fdceaa677ed091bf450f9089a23c1eb69b00217a89927dd8"
     },
     "web/studio031/studio.css": {
       "bytes": 6734,
@@ -95,7 +95,7 @@
     },
     "web/studio031/studio.js": {
       "bytes": 27665,
-      "sha256": "b4fc292ee5d70b8df3b7f3efff2af21e95b1601f7bc40f5ad2f97124d7d0c7a7"
+      "sha256": "07b4b7aa66e3b655bba578c6e43a25f603122acbffa809b07d12ea2d38f6a667"
     },
     "web/studio031/vendor/THREE-LICENSE.txt": {
       "bytes": 1081,
@@ -128,6 +128,10 @@
     "web/studio031/volume-memory.js": {
       "bytes": 1761,
       "sha256": "f681752c6130b958ffc81973b68a38b320095bc14599e7d84ff7307b1ee20db3"
+    },
+    "web/studio031/lite-mode.js": {
+      "bytes": 2400,
+      "sha256": "df716fe771077e2a042dd55634971579910cacd55f4f69125e3f3d0d62df55f7"
     }
   }
 }
